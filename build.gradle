@@ -1,0 +1,33 @@
+/*
+ * Copyright (c) 2016. Michael Buhot m.buhot@gmail.com
+ */
+
+group 'org.mbuhot'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'kotlin'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.0"
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.11'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.elasticsearch:elasticsearch:2.2.0"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.0"
+    testCompile 'com.fasterxml.jackson.core:jackson-databind:2.7.2'
+    testCompile "junit:junit:4.11"
+}
+
