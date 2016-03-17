@@ -14,14 +14,14 @@ TODO
 ## Term Query
 
 JSON:
-```
+```json
 {
     "term" : { "user" : "Kimchy" }
 }
 ```
 
 Kotlin:
-```
+```kotlin
 val query = term {
     "user" to "Kimchy"
 }
@@ -30,7 +30,7 @@ val query = term {
 ## Bool Query
 
 JSON:
-```
+```json
 {
     "bool" : {
         "must" : {
@@ -59,7 +59,7 @@ JSON:
 ```
 
 Kotlin:
-```
+```kotlin
 val query = bool {
     must {
         term { "user" to "kimchy" }
@@ -87,7 +87,7 @@ val query = bool {
 ## Function Score Query
 
 JSON:
-```
+```json
 {
     "function_score": {
         "query": {
@@ -132,7 +132,7 @@ JSON:
 ```
 
 Kotlin:
-```
+```kotlin
 val query = function_score {
     query = match_all { }
     functions = listOf(
