@@ -6,7 +6,34 @@ This integrates with the existing java API, only providing a nicer syntax to bui
 
 # Getting Started
 
-TODO
+## Gradle
+
+```
+repositories {
+    mavenCentral()
+    ...
+    maven {
+        url  "http://dl.bintray.com/mbuhot/maven"
+   }
+}
+dependencies {
+    compile 'mbuhot:eskotlin:0.1.0'
+    ...
+}
+```
+
+## Maven
+
+Full details on [bintray](https://bintray.com/mbuhot/maven/eskotlin/)
+
+```
+<dependency>
+  <groupId>mbuhot</groupId>
+  <artifactId>eskotlin</artifactId>
+  <version>0.1.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 
 # Examples
