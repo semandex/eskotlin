@@ -58,7 +58,7 @@ publishing {
 
 bintray {
     user = hasProperty('bintray_user') ? bintray_user : '' //this usually comes from gradle.properties file in ~/.gradle
-    key = key = hasProperty('bintray_api_key') ? bintray_api_key : '' //this usually comes from gradle.properties file in ~/.gradle
+    key = hasProperty('bintray_api_key') ? bintray_api_key : '' //this usually comes from gradle.properties file in ~/.gradle
     publications = ['mavenJava']
     dryRun = false
     publish = true
