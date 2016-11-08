@@ -4,6 +4,14 @@ Elasticsearch Query DSL for Kotlin.
 This library aims to minimize the gap between the Elasticsearch JSON query DSL, and the API used when writing kotlin applications.
 This integrates with the existing java API, only providing a nicer syntax to build the queries.
 
+
+# Version
+
+|ES Kotlin Version|Target Elasticsearch Version|
+|-------|---------------------|
+|0.2.0|5.0.x|
+|0.1.0|2.2.x|
+
 # Getting Started
 
 ## Gradle
