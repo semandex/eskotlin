@@ -26,7 +26,9 @@ class RegexpTest {
             "regexp" : {
                 "name.first": {
                     "value": "s.*y",
-                    "flags_value": ${ALL.value()}
+                    "flags_value": ${ALL.value()},
+                    "max_determinized_states" : 10000,
+                    "boost": 1.0
                 }
             }
         }
@@ -48,6 +50,7 @@ class RegexpTest {
                 "name.first" : {
                     "value" : "s.*y",
                     "flags_value" : ${INTERSECTION.value() or COMPLEMENT.value() or EMPTY.value()},
+                    "max_determinized_states" : 10000,
                     "boost" : 1.2
                 }
             }

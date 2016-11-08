@@ -186,6 +186,10 @@ See the src/test directory for more examples.
 + [Multi Match](./src/test/kotlin/mbuhot/eskotlin/query/fulltext/MultiMatchTest.kt)
 + [Common Terms](./src/test/kotlin/mbuhot/eskotlin/query/fulltext/CommonTest.kt)
 
+## Full Text Queries -  Not Yet Implemented
++  Match Phrase Query
++  Match Phrase Prefix Query
+
 ## Term Queries - Done
 
 + [Term](./src/test/kotlin/mbuhot/eskotlin/query/term/TermTest.kt)

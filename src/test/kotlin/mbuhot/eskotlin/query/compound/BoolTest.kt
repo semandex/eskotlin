@@ -27,9 +27,14 @@ class BoolTest {
         query should_render_as """
         {
             "bool" : {
-                "should" : {
-                    "match_all" : {}
-                }
+                "should" : [{
+                    "match_all" : {
+                        "boost": 1.0
+                    }
+                }],
+                "disable_coord":false,
+                "adjust_pure_negative":true,
+                "boost":1.0
             }
         }
         """
@@ -62,28 +67,53 @@ class BoolTest {
 
         query should_render_as """
         {
-            "bool" : {
-                "must" : {
-                    "term" : { "user" : "kimchy" }
-                },
-                "filter": {
-                    "term" : { "tag" : "tech" }
-                },
-                "must_not" : {
-                    "range" : {
-                        "age" : { "from" : 10, "to" : 20, "include_lower": true, "include_upper": true }
+            "bool": {
+                "must": [{
+                    "term": {
+                        "user": {
+                            "value": "kimchy",
+                            "boost": 1.0
+                        }
                     }
-                },
-                "should" : [
-                    {
-                        "term" : { "tag" : "wow" }
-                    },
-                    {
-                        "term" : { "tag" : "elasticsearch" }
+                }],
+                "filter": [{
+                    "term": {
+                        "tag": {
+                            "value": "tech",
+                            "boost": 1.0
+                        }
                     }
-                ],
-                "boost" : 1.0,
-                "minimum_should_match" : "1"
+                }],
+                "must_not": [{
+                    "range": {
+                        "age": {
+                            "from": 10,
+                            "to": 20,
+                            "include_lower": true,
+                            "include_upper": true,
+                            "boost": 1.0
+                        }
+                    }
+                }],
+                "should": [{
+                    "term": {
+                        "tag": {
+                            "value": "wow",
+                            "boost": 1.0
+                        }
+                    }
+                }, {
+                    "term": {
+                        "tag": {
+                            "value": "elasticsearch",
+                            "boost": 1.0
+                        }
+                    }
+                }],
+                "disable_coord": false,
+                "adjust_pure_negative": true,
+                "minimum_should_match": "1",
+                "boost": 1.0
             }
         }
         """

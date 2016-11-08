@@ -29,9 +29,14 @@ class ConstantScoreTest {
         {
             "constant_score": {
                 "filter": {
-                    "term": { "user" : "kimchy" }
+                    "term": {
+                        "user": {
+                            "value": "kimchy",
+                            "boost": 1.0
+                        }
+                    }
                 },
-                "boost" : 1.2
+                "boost": 1.2
             }
         }
         """

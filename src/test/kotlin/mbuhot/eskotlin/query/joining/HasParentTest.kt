@@ -6,7 +6,7 @@ package mbuhot.eskotlin.query.joining
 
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.term
-import org.elasticsearch.index.query.support.QueryInnerHitBuilder
+import org.elasticsearch.index.query.InnerHitBuilder
 import org.junit.Test
 
 /**
@@ -21,26 +21,37 @@ class HasParentTest {
 
         val query = has_parent {
             parent_type = "blog"
-            score_mode = "score"
             query {
                 term {
                     "tag" to "something"
                 }
             }
-            inner_hits = QueryInnerHitBuilder()
+            inner_hits = InnerHitBuilder()
         }
 
         query should_render_as """
         {
-            "has_parent" : {
-                "query" : {
-                    "term" : {
-                        "tag" : "something"
+            "has_parent": {
+                "query": {
+                    "term": {
+                        "tag": {
+                            "value": "something",
+                            "boost": 1.0
+                        }
                     }
                 },
-                "parent_type" : "blog",
-                "score_mode" : "score",
-                "inner_hits" : {}
+                "parent_type": "blog",
+                "score": false,
+                "ignore_unmapped": false,
+                "boost": 1.0,
+                "inner_hits": {
+                    "name": "blog",
+                    "from": 0,
+                    "size": 3,
+                    "version": false,
+                    "explain": false,
+                    "track_scores": false
+                }
             }
         }
         """

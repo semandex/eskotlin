@@ -4,23 +4,24 @@
 
 package mbuhot.eskotlin.query.term
 
+import mbuhot.eskotlin.query.QueryData
+import mbuhot.eskotlin.query.initQuery
 import org.elasticsearch.index.query.PrefixQueryBuilder
 
 class PrefixBlock {
-    data class PrefixData(
-        val name: String,
-        var prefix: String? = null,
-        var boost: Float? = null)
+    class PrefixData(
+            val name: String,
+            var prefix: String? = null) : QueryData()
 
     infix fun String.to(prefix: String) = PrefixData(name = this, prefix = prefix)
 
     infix fun String.to(init: PrefixData.() -> Unit): PrefixData =
-        PrefixData(name = this).apply(init)
+            PrefixData(name = this).apply(init)
 }
 
 fun prefix(init: PrefixBlock.() -> PrefixBlock.PrefixData): PrefixQueryBuilder {
     val params = PrefixBlock().init()
     return PrefixQueryBuilder(params.name, params.prefix).apply {
-        params.boost?.let { boost(it) }
+        initQuery(params)
     }
 }

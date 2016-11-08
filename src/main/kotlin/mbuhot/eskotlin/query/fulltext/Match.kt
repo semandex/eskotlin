@@ -6,8 +6,8 @@ package mbuhot.eskotlin.query.fulltext
 
 import org.elasticsearch.common.unit.Fuzziness
 import org.elasticsearch.index.query.MatchQueryBuilder
-import org.elasticsearch.index.query.MatchQueryBuilder.Type.PHRASE
-import org.elasticsearch.index.query.MatchQueryBuilder.Type.PHRASE_PREFIX
+import org.elasticsearch.index.query.Operator
+import org.elasticsearch.index.search.MatchQuery
 
 
 /**
@@ -19,22 +19,20 @@ class MatchBlock {
     infix fun String.to(query: Any) = MatchData(name = this, query = query)
 
     data class MatchData(
-        var name: String,
-        var query: Any? = null,
-        var type: MatchQueryBuilder.Type? = null,
-        var operator: MatchQueryBuilder.Operator? = null,
-        var analyzer: String? = null,
-        var boost: Float? = null,
-        var slop: Int? = null,
-        var fuzziness: Fuzziness? = null,
-        var prefix_length: Int? = null,
-        var max_expansions: Int? = null,
-        var minimum_should_match: String? = null,
-        var fuzzy_rewrite: String? = null,
-        var lenient: Boolean? = null,
-        var fuzzy_transpositions: Boolean? = null,
-        var zero_terms_query: MatchQueryBuilder.ZeroTermsQuery? = null,
-        var cutoff_frequency: Float? = null)
+            var name: String,
+            var query: Any? = null,
+            var operator: String? = null,
+            var analyzer: String? = null,
+            var boost: Float? = null,
+            var fuzziness: Fuzziness? = null,
+            var prefix_length: Int? = null,
+            var max_expansions: Int? = null,
+            var minimum_should_match: String? = null,
+            var fuzzy_rewrite: String? = null,
+            var lenient: Boolean? = null,
+            var fuzzy_transpositions: Boolean? = null,
+            var zero_terms_query: String? = null,
+            var cutoff_frequency: Float? = null)
 }
 
 fun match(init: MatchBlock.() -> MatchBlock.MatchData): MatchQueryBuilder {
@@ -46,24 +44,11 @@ fun match(init: MatchBlock.() -> MatchBlock.MatchData): MatchQueryBuilder {
         params.fuzziness?.let { fuzziness(it) }
         params.fuzzy_rewrite?.let { fuzzyRewrite(it) }
         params.fuzzy_transpositions?.let { fuzzyTranspositions(it) }
-        params.lenient?.let { setLenient(it) }
+        params.lenient?.let { lenient(it) }
         params.max_expansions?.let { maxExpansions(it) }
         params.minimum_should_match?.let { minimumShouldMatch(it) }
-        params.operator?.let { operator(it) }
+        params.operator?.let { operator(Operator.fromString(it)) }
         params.prefix_length?.let { prefixLength(it) }
-        params.slop?.let { slop(it) }
-        params.type?.let { type(it) }
-        params.zero_terms_query?.let { zeroTermsQuery(it) }
+        params.zero_terms_query?.let { zeroTermsQuery(MatchQuery.ZeroTermsQuery.valueOf(it.toUpperCase())) }
     }
 }
-
-
-fun match_phrase(init: MatchBlock.() -> MatchBlock.MatchData) =
-    match {
-        init().apply { type = PHRASE }
-    }
-
-fun match_phrase_prefix(init: MatchBlock.() -> MatchBlock.MatchData) =
-    match {
-        init().apply { type = PHRASE_PREFIX }
-    }

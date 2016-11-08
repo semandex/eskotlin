@@ -10,7 +10,6 @@ import org.elasticsearch.index.query.QueryBuilder
 data class BoostingData(
     var positive: QueryBuilder? = null,
     var negative: QueryBuilder? = null,
-    var boost: Float? = null,
     var negative_boost: Float? = null) {
 
     fun positive(f: () -> QueryBuilder) {
@@ -24,10 +23,7 @@ data class BoostingData(
 
 fun boosting(init: BoostingData.() -> Unit): BoostingQueryBuilder {
     val params = BoostingData().apply(init)
-    return BoostingQueryBuilder().apply {
-        params.positive?.let { positive(it) }
-        params.negative?.let { negative(it) }
-        params.boost?.let { boost(it) }
+    return BoostingQueryBuilder(params.positive, params.negative).apply {
         params.negative_boost?.let { negativeBoost(it) }
     }
 }

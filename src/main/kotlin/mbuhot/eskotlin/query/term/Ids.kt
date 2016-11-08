@@ -4,11 +4,13 @@
 
 package mbuhot.eskotlin.query.term
 
+import mbuhot.eskotlin.query.QueryData
+import mbuhot.eskotlin.query.initQuery
 import org.elasticsearch.index.query.IdsQueryBuilder
 
-data class IdsData(
-    var types: List<String> = emptyList(),
-    var values: List<String>? = null) {
+class IdsData(
+        var types: List<String> = emptyList(),
+        var values: List<String> = emptyList()) : QueryData() {
 
     var type: String
         get() = types[0]
@@ -21,6 +23,7 @@ data class IdsData(
 fun ids(init: IdsData.() -> Unit): IdsQueryBuilder {
     val params = IdsData().apply(init)
     return IdsQueryBuilder(*params.types.toTypedArray()).apply {
-        addIds(params.values)
+        initQuery(params)
+        addIds(*params.values.toTypedArray())
     }
 }

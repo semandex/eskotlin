@@ -22,9 +22,9 @@ class FunctionScoreTest {
         val query = function_score {
             query = match_all { }
             functions = listOf(
-                term { "foo" to "bar" } to gaussDecayFunction("baz", 1.0),
+                term { "foo" to "bar" } to gaussDecayFunction("baz", 1.0, "1d"),
                 match_all { } to randomFunction(234L),
-                null to exponentialDecayFunction("qux", 2.3))
+                null to exponentialDecayFunction("qux", 2.3, "10km"))
 
             boost = 1.2f
             boost_mode = "multiply"
@@ -36,42 +36,56 @@ class FunctionScoreTest {
         query should_render_as """{
             "function_score": {
                 "query": {
-                    "match_all": {}
-                },
-                "functions": [
-                    {
-                        "filter": {
-                            "term": {
-                                "foo": "bar"
-                            }
-                        },
-                        "gauss": {
-                            "baz": {
-                                "scale": 1.0
-                            }
-                        }
-                    },
-                    {
-                        "filter": {
-                            "match_all": {}
-                        },
-                        "random_score": {
-                            "seed": 234
-                        }
-                    },
-                    {
-                        "exp": {
-                            "qux": {
-                                "scale": 2.3
-                            }
-                        }
+                    "match_all": {
+                        "boost": 1.0
                     }
-                ],
+                },
+                "functions": [{
+                    "filter": {
+                        "term": {
+                            "foo": {
+                                "value": "bar",
+                                "boost": 1.0
+                            }
+                        }
+                    },
+                    "gauss": {
+                        "baz": {
+                            "origin": 1.0,
+                            "scale": "1d",
+                            "decay": 0.5
+                        },
+                        "multi_value_mode": "MIN"
+                    }
+                }, {
+                    "filter": {
+                        "match_all": {
+                            "boost": 1.0
+                        }
+                    },
+                    "random_score": {
+                        "seed": 234
+                    }
+                }, {
+                    "filter": {
+                        "match_all": {
+                            "boost": 1.0
+                        }
+                    },
+                    "exp": {
+                        "qux": {
+                            "origin": 2.3,
+                            "scale": "10km",
+                            "decay": 0.5
+                        },
+                        "multi_value_mode": "MIN"
+                    }
+                }],
                 "score_mode": "max",
                 "boost_mode": "multiply",
                 "max_boost": 5.0,
-                "boost": 1.2,
-                "min_score": 0.001
+                "min_score": 0.001,
+                "boost": 1.2
             }
         }
         """

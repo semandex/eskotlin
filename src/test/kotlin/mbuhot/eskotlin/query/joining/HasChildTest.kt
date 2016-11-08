@@ -6,7 +6,8 @@ package mbuhot.eskotlin.query.joining
 
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.term
-import org.elasticsearch.index.query.support.QueryInnerHitBuilder
+import org.apache.lucene.search.join.ScoreMode
+import org.elasticsearch.index.query.InnerHitBuilder
 import org.junit.Test
 
 /**
@@ -20,7 +21,7 @@ class HasChildTest {
     fun `test has_child`() {
         val query = has_child {
             type = "blog_tag"
-            score_mode = "sum"
+            score_mode = ScoreMode.Total
             min_children = 2
             max_children = 10
             query {
@@ -28,21 +29,33 @@ class HasChildTest {
                     "tag" to "something"
                 }
             }
-            inner_hits = QueryInnerHitBuilder()
+            inner_hits = InnerHitBuilder()
         }
         query should_render_as """
         {
-            "has_child" : {
-                "query" : {
-                    "term" : {
-                        "tag" : "something"
+            "has_child": {
+                "query": {
+                    "term": {
+                        "tag": {
+                            "value": "something",
+                            "boost": 1.0
+                        }
                     }
                 },
-                "child_type" : "blog_tag",
-                "score_mode" : "sum",
+                "type": "blog_tag",
+                "score_mode": "sum",
                 "min_children": 2,
                 "max_children": 10,
-                "inner_hits" : {}
+                "ignore_unmapped": false,
+                "boost": 1.0,
+                "inner_hits": {
+                    "name": "blog_tag",
+                    "from": 0,
+                    "size": 3,
+                    "version": false,
+                    "explain": false,
+                    "track_scores": false
+                }
             }
         }
         """

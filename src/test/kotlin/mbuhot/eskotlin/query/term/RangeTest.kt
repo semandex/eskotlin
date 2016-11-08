@@ -55,10 +55,11 @@ class RangeTest {
                 "born" : {
                     "from" : "01/01/2012",
                     "to" : "2013",
+                    "include_lower" : false,
+                    "include_upper" : false,
                     "time_zone" : "+01:00",
                     "format" : "dd/MM/yyyy||yyyy",
-                    "include_lower" : false,
-                    "include_upper" : false
+                    "boost": 1.0
                 }
             }
         }

@@ -4,18 +4,19 @@
 
 package mbuhot.eskotlin.query.term
 
+import mbuhot.eskotlin.query.QueryData
+import mbuhot.eskotlin.query.initQuery
 import org.elasticsearch.index.query.RangeQueryBuilder
 
 class RangeBlock {
-    data class RangeData(
+     class RangeData(
         var name: String,
         var from: Any? = null,
         var to: Any? = null,
         var include_upper: Boolean? = null,
         var include_lower: Boolean? = null,
-        var boost: Float? = null,
         var format: String? = null,
-        var time_zone: String? = null) {
+        var time_zone: String? = null) : QueryData() {
 
         var gte: Any?
             get() = this.from
@@ -54,6 +55,7 @@ class RangeBlock {
 fun range(init: RangeBlock.() -> RangeBlock.RangeData): RangeQueryBuilder {
     val params = RangeBlock().init()
     return RangeQueryBuilder(params.name).apply {
+        initQuery(params)
         params.from?.let { from(it) }
         params.to?.let { to(it) }
         params.include_lower?.let { includeLower(it) }

@@ -4,13 +4,14 @@
 
 package mbuhot.eskotlin.query.term
 
+import mbuhot.eskotlin.query.QueryData
+import mbuhot.eskotlin.query.initQuery
 import org.elasticsearch.index.query.TermQueryBuilder
 
 class TermBlock {
-    data class TermData(
-        var name: String? = null,
-        var value: String? = null,
-        var boost: Float? = null)
+    class TermData(
+            var name: String? = null,
+            var value: String? = null) : QueryData()
 
     infix fun String.to(value: String): TermData {
         return TermData(name = this, value = value)
@@ -24,8 +25,6 @@ class TermBlock {
 fun term(init: TermBlock.() -> TermBlock.TermData): TermQueryBuilder {
     val params = TermBlock().init()
     return TermQueryBuilder(params.name, params.value).apply {
-        with (params) {
-            boost?.let { boost(it) }
-        }
+        initQuery(params)
     }
 }

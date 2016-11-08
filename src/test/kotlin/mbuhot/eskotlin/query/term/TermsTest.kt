@@ -23,7 +23,8 @@ class TermsTest {
         query should_render_as """
             {
                 "terms" : {
-                    "user" : ["kimchy", "elasticsearch"]
+                    "user" : ["kimchy", "elasticsearch"],
+                    "boost": 1.0
                 }
             }
             """

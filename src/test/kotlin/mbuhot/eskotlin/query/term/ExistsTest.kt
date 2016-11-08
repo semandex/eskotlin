@@ -21,7 +21,10 @@ class ExistsTest {
 
         query should_render_as """
         {
-            "exists" : { "field" : "user" }
+            "exists" : {
+                "field" : "user",
+                "boost" : 1.0
+            }
         }
         """
     }

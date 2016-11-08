@@ -4,19 +4,19 @@
 
 package mbuhot.eskotlin.query.joining
 
+import org.apache.lucene.search.join.ScoreMode
 import org.elasticsearch.index.query.HasChildQueryBuilder
+import org.elasticsearch.index.query.InnerHitBuilder
 import org.elasticsearch.index.query.QueryBuilder
-import org.elasticsearch.index.query.support.QueryInnerHitBuilder
 
 data class HasChildData(
-    var query: QueryBuilder? = null,
-    var type: String? = null,
-    var boost: Float? = null,
-    var score_mode: String? = null,
-    var min_children: Int? = null,
-    var max_children: Int? = null,
-    var short_circuit_cutoff: Int? = null,
-    var inner_hits: QueryInnerHitBuilder? = null) {
+        var query: QueryBuilder? = null,
+        var type: String? = null,
+        var boost: Float? = null,
+        var score_mode: ScoreMode = ScoreMode.None,
+        var min_children: Int = HasChildQueryBuilder.DEFAULT_MIN_CHILDREN,
+        var max_children: Int = HasChildQueryBuilder.DEFAULT_MAX_CHILDREN,
+        var inner_hits: InnerHitBuilder? = null) {
 
     fun query(f: () -> QueryBuilder) {
         query = f()
@@ -25,12 +25,9 @@ data class HasChildData(
 
 fun has_child(init: HasChildData.() -> Unit): HasChildQueryBuilder {
     val params = HasChildData().apply(init)
-    return HasChildQueryBuilder(params.type, params.query).apply {
+    return HasChildQueryBuilder(params.type, params.query, params.score_mode).apply {
         params.boost?.let { boost(it) }
-        params.score_mode?.let { scoreMode(it) }
-        params.min_children?.let { minChildren(it) }
-        params.max_children?.let { maxChildren(it) }
-        params.short_circuit_cutoff?.let { setShortCircuitCutoff(it) }
+        minMaxChildren(params.min_children, params.max_children)
         params.inner_hits?.let { innerHit(it) }
     }
 }

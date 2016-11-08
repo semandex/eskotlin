@@ -30,14 +30,25 @@ class IndicesTest {
 
         query should_render_as """
         {
-            "indices" : {
-                "indices" : ["index1", "index2"],
-                "query" : {
-                    "term" : { "tag" : "wow" }
+            "indices": {
+                "indices": ["index1", "index2"],
+                "query": {
+                    "term": {
+                        "tag": {
+                            "value": "wow",
+                            "boost": 1.0
+                        }
+                    }
                 },
-                "no_match_query" : {
-                    "term" : { "tag" : "kow" }
-                }
+                "no_match_query": {
+                    "term": {
+                        "tag": {
+                            "value": "kow",
+                            "boost": 1.0
+                        }
+                    }
+                },
+                "boost": 1.0
             }
         }
         """
@@ -55,12 +66,22 @@ class IndicesTest {
 
         query should_render_as """
         {
-            "indices" : {
-                "indices" : ["index1", "index2"],
-                "query" : {
-                    "term" : { "tag" : "wow" }
+            "indices": {
+                "indices": ["index1", "index2"],
+                "query": {
+                    "term": {
+                        "tag": {
+                            "value": "wow",
+                            "boost": 1.0
+                        }
+                    }
                 },
-                "no_match_query" : "none"
+                "no_match_query": {
+                    "match_none": {
+                        "boost": 1.0
+                    }
+                },
+                "boost": 1.0
             }
         }
         """

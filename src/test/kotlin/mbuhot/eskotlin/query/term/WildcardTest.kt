@@ -22,7 +22,10 @@ class WildcardTest {
         query should_render_as """
          {
             "wildcard" : {
-                "user" : "ki*y"
+                "user" : {
+                    "wildcard" : "ki*y",
+                    "boost" : 1.0
+                }
             }
          }"""
     }

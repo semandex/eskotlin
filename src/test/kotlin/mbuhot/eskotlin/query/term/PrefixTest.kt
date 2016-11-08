@@ -22,7 +22,10 @@ class PrefixTest {
         query should_render_as """
         {
             "prefix" : {
-                "user" : "ki"
+                "user" : {
+                    "value": "ki",
+                    "boost": 1.0
+                }
             }
         }"""
     }
@@ -39,7 +42,7 @@ class PrefixTest {
         {
             "prefix" : {
                 "user" : {
-                    "prefix" : "ki",
+                    "value" : "ki",
                     "boost" : 2.0
                 }
             }
