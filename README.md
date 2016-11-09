@@ -25,7 +25,7 @@ repositories {
    }
 }
 dependencies {
-    compile 'mbuhot:eskotlin:0.1.0'
+    compile 'mbuhot:eskotlin:0.2.0'
     ...
 }
 ```
@@ -38,7 +38,7 @@ Full details on [bintray](https://bintray.com/mbuhot/maven/eskotlin/)
 <dependency>
   <groupId>mbuhot</groupId>
   <artifactId>eskotlin</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <type>pom</type>
 </dependency>
 ```
