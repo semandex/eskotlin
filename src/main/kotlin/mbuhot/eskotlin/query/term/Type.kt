@@ -4,9 +4,16 @@
 
 package mbuhot.eskotlin.query.term
 
+import mbuhot.eskotlin.query.QueryData
+import mbuhot.eskotlin.query.initQuery
 import org.elasticsearch.index.query.TypeQueryBuilder
 
-data class TypeData(var value: String? = null)
+class TypeData(
+        var value: String? = null) : QueryData()
 
-fun type(init: TypeData.() -> Unit): TypeQueryBuilder =
-    TypeQueryBuilder(TypeData().apply(init).value)
+fun type(init: TypeData.() -> Unit): TypeQueryBuilder {
+    val params = TypeData().apply(init)
+    return TypeQueryBuilder(params.value).apply {
+        initQuery(params)
+    }
+}

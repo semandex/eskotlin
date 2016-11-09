@@ -28,17 +28,24 @@ class DisMaxTest {
 
         query should_render_as """
         {
-            "dis_max" : {
-                "tie_breaker" : 0.7,
-                "boost" : 1.2,
-                "queries" : [
-                    {
-                        "term" : { "age" : "34" }
-                    },
-                    {
-                        "term" : { "age" : "35" }
+            "dis_max": {
+                "tie_breaker": 0.7,
+                "queries": [{
+                    "term": {
+                        "age": {
+                            "value": "34",
+                            "boost": 1.0
+                        }
                     }
-                ]
+                }, {
+                    "term": {
+                        "age": {
+                            "value": "35",
+                            "boost": 1.0
+                        }
+                    }
+                }],
+                "boost": 1.2
             }
         }
         """

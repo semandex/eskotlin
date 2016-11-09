@@ -5,6 +5,7 @@
 package mbuhot.eskotlin.query.fulltext
 
 import org.elasticsearch.index.query.CommonTermsQueryBuilder
+import org.elasticsearch.index.query.Operator
 
 
 /**
@@ -16,15 +17,15 @@ class CommonBlock {
     }
 
     data class CommonData(
-        var name: String,
-        var query: Any? = null,
-        var high_freq_operator: CommonTermsQueryBuilder.Operator? = null,
-        var low_freq_operator: CommonTermsQueryBuilder.Operator? = null,
-        var analyzer: String? = null,
-        var boost: Float? = null,
-        var disable_coord: Boolean? = null,
-        var cutoff_frequency: Float? = null,
-        val minimum_should_match: MinimumShouldMatchData = MinimumShouldMatchData()) {
+            var name: String,
+            var query: Any? = null,
+            var high_freq_operator: String? = null,
+            var low_freq_operator: String? = null,
+            var analyzer: String? = null,
+            var boost: Float? = null,
+            var disable_coord: Boolean? = null,
+            var cutoff_frequency: Float? = null,
+            val minimum_should_match: MinimumShouldMatchData = MinimumShouldMatchData()) {
 
         fun minimum_should_match(init: MinimumShouldMatchData.() -> Unit) {
             this.minimum_should_match.init()
@@ -41,8 +42,8 @@ class CommonBlock {
 fun common(init: CommonBlock.() -> CommonBlock.CommonData): CommonTermsQueryBuilder {
     val params = CommonBlock().init()
     return CommonTermsQueryBuilder(params.name, params.query).apply {
-        params.high_freq_operator?.let { highFreqOperator(it) }
-        params.low_freq_operator?.let { lowFreqOperator(it) }
+        params.high_freq_operator?.let { highFreqOperator(Operator.fromString(it)) }
+        params.low_freq_operator?.let { lowFreqOperator(Operator.fromString(it)) }
         params.analyzer?.let { analyzer(it) }
         params.boost?.let { boost(it) }
         params.disable_coord?.let { disableCoord(it) }

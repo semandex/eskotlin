@@ -17,7 +17,12 @@ class TermTest {
 
         query should_render_as """
             {
-                "term" : { "user" : "Kimchy" }
+                "term" : {
+                    "user" : {
+                        "value": "Kimchy",
+                        "boost": 1.0
+                    }
+                }
             }
             """
     }

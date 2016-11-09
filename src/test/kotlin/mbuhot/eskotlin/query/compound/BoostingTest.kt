@@ -29,24 +29,29 @@ class BoostingTest {
                 }
             }
             negative_boost = 0.2f
-            boost = 0.1f
         }
 
         query should_render_as """
             {
-                "boosting" : {
-                    "positive" : {
-                        "term" : {
-                            "field1" : "value1"
+                "boosting": {
+                    "positive": {
+                        "term": {
+                            "field1": {
+                                "value": "value1",
+                                "boost": 1.0
+                            }
                         }
                     },
-                    "negative" : {
-                        "term" : {
-                            "field2" : "value2"
+                    "negative": {
+                        "term": {
+                            "field2": {
+                                "value": "value2",
+                                "boost": 1.0
+                            }
                         }
                     },
-                    "negative_boost" : 0.2,
-                    "boost" : 0.1
+                    "negative_boost": 0.2,
+                    "boost": 1.0
                 }
             }
             """

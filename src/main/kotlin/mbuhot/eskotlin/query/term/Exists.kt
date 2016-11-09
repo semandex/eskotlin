@@ -4,11 +4,15 @@
 
 package mbuhot.eskotlin.query.term
 
+import mbuhot.eskotlin.query.QueryData
+import mbuhot.eskotlin.query.initQuery
 import org.elasticsearch.index.query.ExistsQueryBuilder
 
-data class ExistsData(var field: String? = null)
+class ExistsData(var field: String? = null) : QueryData()
 
 fun exists(init: ExistsData.() -> Unit): ExistsQueryBuilder {
     val params = ExistsData().apply(init)
-    return ExistsQueryBuilder(params.field)
+    return ExistsQueryBuilder(params.field).apply {
+        initQuery(params)
+    }
 }

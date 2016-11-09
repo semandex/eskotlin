@@ -23,7 +23,12 @@ class FuzzyTest {
         {
             "fuzzy" : {
                 "user" : {
-                    "value" : "ki"
+                    "value" : "ki",
+                    "fuzziness" : "AUTO",
+                    "prefix_length" : 0,
+                    "max_expansions" : 50,
+                    "transpositions" : false,
+                    "boost" : 1.0
                 }
             }
         }
@@ -35,7 +40,7 @@ class FuzzyTest {
         val query = fuzzy {
             "user" to {
                 value = "ki"
-                boost = 1.0f
+                boost = 2.0f
                 fuzziness = Fuzziness.TWO
                 prefix_length = 0
                 max_expansions = 100
@@ -46,10 +51,11 @@ class FuzzyTest {
             "fuzzy" : {
                 "user" : {
                     "value" :         "ki",
-                    "boost" :         1.0,
                     "fuzziness" :     "2",
                     "prefix_length" : 0,
-                    "max_expansions": 100
+                    "max_expansions": 100,
+                    "transpositions" : false,
+                    "boost" :         2.0
                 }
             }
         }

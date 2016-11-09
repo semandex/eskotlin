@@ -21,7 +21,24 @@ class TypeTest {
         query should_render_as """
         {
             "type": {
-                "value" : "my_type"
+                "value" : "my_type",
+                "boost" : 1.0
+            }
+        }
+        """
+    }
+
+    @Test
+    fun `test type with boost`() {
+        val query = type {
+            value = "my_type"
+            boost = 2.0f
+        }
+        query should_render_as """
+        {
+            "type": {
+                "value" : "my_type",
+                "boost" : 2.0
             }
         }
         """

@@ -21,12 +21,16 @@ class CommonTest {
 
         query should_render_as """
         {
-          "common": {
-            "body": {
-              "query": "this is bonsai cool",
-              "cutoff_frequency": 0.001
+            "common": {
+                "body": {
+                    "query": "this is bonsai cool",
+                    "disable_coord": true,
+                    "high_freq_operator": "OR",
+                    "low_freq_operator": "OR",
+                    "cutoff_frequency": 0.001,
+                    "boost": 1.0
+                }
             }
-          }
         }
         """
     }
@@ -37,19 +41,22 @@ class CommonTest {
             "body" to {
                 query = "nelly the elephant as a cartoon"
                 cutoff_frequency = 0.001f
-                low_freq_operator = CommonTermsQueryBuilder.Operator.AND
+                low_freq_operator = "and"
             }
         }
 
         query should_render_as """
             {
-              "common": {
-                "body": {
-                  "query": "nelly the elephant as a cartoon",
-                  "low_freq_operator": "AND",
-                  "cutoff_frequency": 0.001
+                "common": {
+                    "body": {
+                        "query": "nelly the elephant as a cartoon",
+                        "disable_coord": true,
+                        "high_freq_operator": "OR",
+                        "low_freq_operator": "AND",
+                        "cutoff_frequency": 0.001,
+                        "boost": 1.0
+                    }
                 }
-              }
             }
             """
     }
@@ -65,15 +72,19 @@ class CommonTest {
         }
         query should_render_as """
             {
-              "common": {
-                "body": {
-                  "query": "nelly the elephant as a cartoon",
-                  "cutoff_frequency": 0.001,
-                  "minimum_should_match": {
-                    "low_freq" : "2"
-                  }
+                "common": {
+                    "body": {
+                        "query": "nelly the elephant as a cartoon",
+                        "disable_coord": true,
+                        "high_freq_operator": "OR",
+                        "low_freq_operator": "OR",
+                        "cutoff_frequency": 0.001,
+                        "minimum_should_match": {
+                            "low_freq": "2"
+                        },
+                        "boost": 1.0
+                    }
                 }
-              }
             }
         """
     }
@@ -93,16 +104,20 @@ class CommonTest {
 
         query should_render_as """
             {
-              "common": {
-                "body": {
-                  "query": "nelly the elephant not as a cartoon",
-                  "cutoff_frequency": 0.001,
-                  "minimum_should_match": {
-                      "low_freq" : "2",
-                      "high_freq" : "3"
-                   }
+                "common": {
+                    "body": {
+                        "query": "nelly the elephant not as a cartoon",
+                        "disable_coord": true,
+                        "high_freq_operator": "OR",
+                        "low_freq_operator": "OR",
+                        "cutoff_frequency": 0.001,
+                        "minimum_should_match": {
+                            "low_freq": "2",
+                            "high_freq": "3"
+                        },
+                        "boost": 1.0
+                    }
                 }
-              }
             }
             """
     }

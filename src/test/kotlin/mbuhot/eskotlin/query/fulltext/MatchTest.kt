@@ -7,7 +7,6 @@ package mbuhot.eskotlin.query.fulltext
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.boost
 import mbuhot.eskotlin.query.term.match_all
-import org.elasticsearch.index.query.MatchQueryBuilder
 import org.junit.Test
 
 /**
@@ -31,9 +30,16 @@ class MatchTest {
         val query = match { "message" to "this is a test" }
         query should_render_as """
             {
-                "match" : {
-                    "message" : {
-                        "query" : "this is a test"
+                "match": {
+                    "message": {
+                        "query": "this is a test",
+                        "operator": "OR",
+                        "prefix_length": 0,
+                        "max_expansions": 50,
+                        "fuzzy_transpositions": true,
+                        "lenient": false,
+                        "zero_terms_query": "NONE",
+                        "boost": 1.0
                     }
                 }
             }
@@ -47,16 +53,22 @@ class MatchTest {
         val query = match {
             "message" to {
                 query = "this is a test"
-                operator = MatchQueryBuilder.Operator.AND
+                operator = "and"
             }
         }
 
         query should_render_as """
             {
-                "match" : {
-                    "message" : {
-                        "query" : "this is a test",
-                        "operator" : "AND"
+                "match": {
+                    "message": {
+                        "query": "this is a test",
+                        "operator": "AND",
+                        "prefix_length": 0,
+                        "max_expansions": 50,
+                        "fuzzy_transpositions": true,
+                        "lenient": false,
+                        "zero_terms_query": "NONE",
+                        "boost": 1.0
                     }
                 }
             }
@@ -69,17 +81,22 @@ class MatchTest {
         val query = match {
             "message" to {
                 query = "to be or not to be"
-                operator = MatchQueryBuilder.Operator.AND
-                zero_terms_query = MatchQueryBuilder.ZeroTermsQuery.ALL
+                operator = "and"
+                zero_terms_query = "all"
             }
         }
         query should_render_as """
             {
-                "match" : {
-                    "message" : {
-                        "query" : "to be or not to be",
-                        "operator" : "AND",
-                        "zero_terms_query": "ALL"
+                "match": {
+                    "message": {
+                        "query": "to be or not to be",
+                        "operator": "AND",
+                        "prefix_length": 0,
+                        "max_expansions": 50,
+                        "fuzzy_transpositions": true,
+                        "lenient": false,
+                        "zero_terms_query": "ALL",
+                        "boost": 1.0
                     }
                 }
             }
@@ -98,10 +115,17 @@ class MatchTest {
 
         query should_render_as """
             {
-                "match" : {
-                    "message" : {
-                        "query" : "to be or not to be",
-                        "cutoff_frequency" : 0.001
+                "match": {
+                    "message": {
+                        "query": "to be or not to be",
+                        "operator": "OR",
+                        "prefix_length": 0,
+                        "max_expansions": 50,
+                        "fuzzy_transpositions": true,
+                        "lenient": false,
+                        "zero_terms_query": "NONE",
+                        "cutoff_frequency": 0.001,
+                        "boost": 1.0
                     }
                 }
             }
@@ -113,119 +137,25 @@ class MatchTest {
         val query = match {
             "message" to {
                 query = "this is a test"
-                type = MatchQueryBuilder.Type.PHRASE
             }
         }
 
         query should_render_as """
             {
-                "match" : {
-                    "message" : {
-                        "query" : "this is a test",
-                        "type" : "phrase"
+                "match": {
+                    "message": {
+                        "query": "this is a test",
+                        "operator": "OR",
+                        "prefix_length": 0,
+                        "max_expansions": 50,
+                        "fuzzy_transpositions": true,
+                        "lenient": false,
+                        "zero_terms_query": "NONE",
+                        "boost": 1.0
                     }
                 }
             }
             """
     }
 
-    @Test
-    fun `test match_phrase`() {
-        val query = match_phrase {
-            "message" to "this is a test"
-        }
-
-        query should_render_as """
-            {
-                "match" : {
-                    "message" : {
-                        "query" : "this is a test",
-                        "type" : "phrase"
-                    }
-                }
-            }
-            """
-    }
-
-    @Test
-    fun `test match_phrase with analyzer`() {
-        val query = match_phrase {
-            "message" to {
-                query = "this is a test"
-                analyzer = "my_analyzer"
-            }
-        }
-        query should_render_as """
-            {
-                "match" : {
-                    "message" : {
-                        "query" : "this is a test",
-                        "type" : "phrase",
-                        "analyzer" : "my_analyzer"
-                    }
-                }
-            }
-            """
-    }
-
-    @Test
-    fun `test match_phrase_prefix`() {
-        val query = match_phrase_prefix {
-            "message" to "this is a test"
-        }
-
-        query should_render_as """
-            {
-                "match" : {
-                    "message" : {
-                        "query" : "this is a test",
-                        "type" : "phrase_prefix"
-                    }
-                }
-            }
-            """
-    }
-
-    @Test
-    fun `test match with type phrase_prefix`() {
-        val query = match {
-            "message" to {
-                query = "this is a test"
-                type = MatchQueryBuilder.Type.PHRASE_PREFIX
-            }
-        }
-
-        query should_render_as """
-        {
-            "match" : {
-                "message" : {
-                    "query" : "this is a test",
-                    "type" : "phrase_prefix"
-                }
-            }
-        }
-        """
-    }
-
-    @Test
-    fun `test match_phrase_prefix with max_expansions`() {
-        val query = match_phrase_prefix {
-            "message" to {
-                query = "this is a test"
-                max_expansions = 10
-            }
-        }
-
-        query should_render_as """
-            {
-                "match" : {
-                    "message" : {
-                        "query" : "this is a test",
-                        "type" : "phrase_prefix",
-                        "max_expansions" : 10
-                    }
-                }
-            }
-            """
-    }
 }

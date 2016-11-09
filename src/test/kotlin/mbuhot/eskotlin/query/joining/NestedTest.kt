@@ -8,7 +8,8 @@ import mbuhot.eskotlin.query.compound.bool
 import mbuhot.eskotlin.query.fulltext.match
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.range
-import org.elasticsearch.index.query.support.QueryInnerHitBuilder
+import org.apache.lucene.search.join.ScoreMode
+import org.elasticsearch.index.query.InnerHitBuilder
 import org.junit.Test
 
 /**
@@ -22,16 +23,15 @@ class NestedTest {
     fun `test nested`() {
         val query = nested {
             path = "obj1"
-            score_mode = "avg"
+            score_mode = ScoreMode.Avg
             query {
                 bool {
                     must = listOf(
-                        match { "obj1.name" to "blue" },
-                        range { "obj1.count" to { gt = 5 } }
+                            match { "obj1.name" to "blue" },
+                            range { "obj1.count" to { gt = 5 } }
                     )
                 }
             }
-            inner_hits = QueryInnerHitBuilder()
         }
 
         query should_render_as """
@@ -41,7 +41,18 @@ class NestedTest {
                     "bool" : {
                         "must" : [
                             {
-                                "match" : {"obj1.name" : { "query": "blue"} }
+                                "match" : {
+                                    "obj1.name" : { 
+                                        "query": "blue",
+                                        "operator":"OR",
+                                        "prefix_length":0,
+                                        "max_expansions":50,
+                                        "fuzzy_transpositions":true,
+                                        "lenient":false,
+                                        "zero_terms_query":"NONE",
+                                        "boost": 1.0
+                                    } 
+                                }
                             },
                             {
                                 "range" : {
@@ -49,16 +60,21 @@ class NestedTest {
                                         "from" : 5,
                                         "to" : null,
                                         "include_lower" : false,
-                                        "include_upper" : true
+                                        "include_upper" : true,
+                                        "boost": 1.0
                                     }
                                 }
                             }
-                        ]
+                        ],
+                        "disable_coord":false,
+                        "adjust_pure_negative":true,
+                        "boost":1.0
                     }
                 },
                 "path" : "obj1",
+                "ignore_unmapped":false,
                 "score_mode" : "avg",
-                "inner_hits" : {}
+                "boost": 1.0
             }
         }
         """
