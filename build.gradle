@@ -57,8 +57,8 @@ publishing {
 }
 
 bintray {
-    user = hasProperty('bintray_user') ? bintray_user : '' //this usually comes from gradle.properties file in ~/.gradle
-    key = hasProperty('bintray_api_key') ? bintray_api_key : '' //this usually comes from gradle.properties file in ~/.gradle
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
     publications = ['mavenJava']
     dryRun = false
     publish = true
@@ -82,5 +82,3 @@ bintray {
         }
     }
 }
-
-
