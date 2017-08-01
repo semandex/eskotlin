@@ -9,7 +9,7 @@ import org.junit.Assert.assertThat
 
 
 val jsonMapper = ObjectMapper()
-fun json_normalize(str: String) = jsonMapper.readTree(str).let { jsonMapper.writeValueAsString(it) }
+fun json_normalize(str: String) : String = jsonMapper.readTree(str).let { jsonMapper.writeValueAsString(it) }
 
 infix fun <T> T.should_render_as(jsonStr: String) {
     assertThat(

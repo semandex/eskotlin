@@ -9,7 +9,6 @@ import mbuhot.eskotlin.query.fulltext.match
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.range
 import org.apache.lucene.search.join.ScoreMode
-import org.elasticsearch.index.query.InnerHitBuilder
 import org.junit.Test
 
 /**
