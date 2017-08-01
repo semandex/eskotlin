@@ -5,8 +5,6 @@
 package mbuhot.eskotlin.query.fulltext
 
 import mbuhot.eskotlin.query.should_render_as
-import org.elasticsearch.index.query.MatchQueryBuilder
-import org.elasticsearch.index.query.MultiMatchQueryBuilder
 import org.junit.Test
 
 
@@ -117,4 +115,29 @@ class MultiMatchTest {
             }
             """
     }
+
+    @Test
+    fun `test multi_match with boost`() {
+        val query = multi_match {
+            query = "this is a test"
+            fields = listOf("subject","message^2.0")
+        }
+        query should_render_as """
+            {
+                "multi_match": {
+                    "query": "this is a test",
+                    "fields": ["message^2.0", "subject^1.0"],
+                    "type": "best_fields",
+                    "operator": "OR",
+                    "slop": 0,
+                    "prefix_length": 0,
+                    "max_expansions": 50,
+                    "lenient": false,
+                    "zero_terms_query": "NONE",
+                    "boost": 1.0
+                }
+            }
+            """
+    }
+
 }
