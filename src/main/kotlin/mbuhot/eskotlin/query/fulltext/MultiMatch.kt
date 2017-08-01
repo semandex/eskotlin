@@ -27,18 +27,21 @@ data class MultiMatchData(
         var cutoff_frequency: Float? = null,
         var zero_terms_query: MatchQuery.ZeroTermsQuery? = null)
 
+private fun String.splitFieldBoost() : Pair<String, Float> {
+    val parts = this.split("^", limit = 2)
+    return when (parts.size) {
+        1 -> parts[0] to 1.0f
+        else -> parts[0] to parts[1].toFloat()
+    }
+}
+
+private fun MultiMatchData.boostedFields() =
+    fields!!.map { it.splitFieldBoost() }.toMap()
+
 fun multi_match(init: MultiMatchData.() -> Unit): MultiMatchQueryBuilder {
     val params = MultiMatchData().apply(init)
-    val pattern = """\^\d?\.*\d*""".toRegex()
-    val nonBoostedFields: List<String> = params.fields!!.filter {
-        !pattern.containsMatchIn(it)
-    }
-    val boostedFieldsMap: Map<String, Float>? = params.fields!!.minus(nonBoostedFields).map { it ->
-        val splitString: List<String> = it.split("^")
-        splitString[0] to splitString[1].toFloat()
-    }.toMap()
-    return MultiMatchQueryBuilder(params.query, *nonBoostedFields.toTypedArray()).apply {
-        boostedFieldsMap?.let { fields(boostedFieldsMap)}
+    return MultiMatchQueryBuilder(params.query).apply {
+        fields(params.boostedFields())
         params.type?.let { type(it) }
         params.operator?.let { operator(Operator.fromString(it)) }
         params.analyzer?.let { analyzer(it) }
