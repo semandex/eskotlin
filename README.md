@@ -7,10 +7,9 @@ This integrates with the existing java API, only providing a nicer syntax to bui
 
 # Version
 
-|ES Kotlin Version|Target Elasticsearch Version|
-|-------|---------------------|
-|0.2.0|5.0.x|
-|0.1.0|2.2.x|
+For Elastic Search version 2.2.x, use ES Kotlin 0.1.0
+
+For Elastic Search version 5.0.x use ES Kotlin 0.3.0
 
 # Getting Started
 
@@ -25,7 +24,7 @@ repositories {
    }
 }
 dependencies {
-    compile 'mbuhot:eskotlin:0.2.0'
+    compile 'mbuhot:eskotlin:0.3.0'
     ...
 }
 ```
@@ -38,7 +37,7 @@ Full details on [bintray](https://bintray.com/mbuhot/maven/eskotlin/)
 <dependency>
   <groupId>mbuhot</groupId>
   <artifactId>eskotlin</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
   <type>pom</type>
 </dependency>
 ```
