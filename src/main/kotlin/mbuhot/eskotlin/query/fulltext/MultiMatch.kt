@@ -29,7 +29,16 @@ data class MultiMatchData(
 
 fun multi_match(init: MultiMatchData.() -> Unit): MultiMatchQueryBuilder {
     val params = MultiMatchData().apply(init)
-    return MultiMatchQueryBuilder(params.query, *params.fields!!.toTypedArray()).apply {
+    val pattern = """\^\d?\.*\d*""".toRegex()
+    val nonBoostedFields: List<String> = params.fields!!.filter {
+        !pattern.containsMatchIn(it)
+    }
+    val boostedFieldsMap: Map<String, Float>? = params.fields!!.minus(nonBoostedFields).map { it ->
+        val splitString: List<String> = it.split("^")
+        splitString[0] to splitString[1].toFloat()
+    }.toMap()
+    return MultiMatchQueryBuilder(params.query, *nonBoostedFields.toTypedArray()).apply {
+        boostedFieldsMap?.let { fields(boostedFieldsMap)}
         params.type?.let { type(it) }
         params.operator?.let { operator(Operator.fromString(it)) }
         params.analyzer?.let { analyzer(it) }
