@@ -4,7 +4,7 @@
 
 package mbuhot.eskotlin.query.joining
 
-import org.elasticsearch.index.query.HasParentQueryBuilder
+import org.elasticsearch.join.query.HasParentQueryBuilder
 import org.elasticsearch.index.query.InnerHitBuilder
 import org.elasticsearch.index.query.QueryBuilder
 

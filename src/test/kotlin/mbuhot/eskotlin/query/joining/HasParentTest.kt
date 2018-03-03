@@ -45,7 +45,7 @@ class HasParentTest {
                 "ignore_unmapped": false,
                 "boost": 1.0,
                 "inner_hits": {
-                    "name": "blog",
+                    "ignore_unmapped": false,
                     "from": 0,
                     "size": 3,
                     "version": false,

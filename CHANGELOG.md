@@ -4,6 +4,7 @@
  - Update Gradle version to 4.5.1
  - Update Kotlin version to 1.2.30
  - Update elasticsearch version to 5.6.5
+ - Import HasChild/HasParent from org.elasticsearch.plugin:parent-join-client module
 
 # 0.3.0
 
