@@ -5,12 +5,6 @@ This library aims to minimize the gap between the Elasticsearch JSON query DSL, 
 This integrates with the existing java API, only providing a nicer syntax to build the queries.
 
 
-# Version
-
-For Elastic Search version 2.2.x, use ES Kotlin 0.1.0
-
-For Elastic Search version 5.0.x use ES Kotlin 0.3.0
-
 # Getting Started
 
 ## Gradle
@@ -24,10 +18,12 @@ repositories {
    }
 }
 dependencies {
-    compile 'mbuhot:eskotlin:0.3.0'
+    compile 'mbuhot:eskotlin:0.4.0'
     ...
 }
 ```
+
+See [CHANGELOG](./CHANGELOG.md) for older versions supporting previous elasticsearch client versions.
 
 ## Maven
 
