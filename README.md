@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mbuhot/eskotlin.svg?branch=master)](https://travis-ci.org/mbuhot/eskotlin)
+
 # ES Kotlin
 Elasticsearch Query DSL for Kotlin.
 
