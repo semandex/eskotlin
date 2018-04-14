@@ -38,7 +38,7 @@ class MatchPhraseTest {
     @Test
     fun `test match_phrase with analyzer`() {
         val query = match_phrase {
-            "message" to {
+            "message" {
                 query = "this is a test"
                 analyzer = "my_analyzer"
             }

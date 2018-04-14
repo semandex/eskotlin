@@ -15,7 +15,12 @@ import org.elasticsearch.index.search.MatchQuery
  */
 
 class MatchBlock {
-    infix fun String.to(init: MatchData.() -> Unit) = MatchData(name = this).apply(init)
+
+    @Deprecated(message = "Use invoke operator instead.", replaceWith = ReplaceWith("invoke(init)"))
+    infix fun String.to(init: MatchData.() -> Unit) = this.invoke(init)
+
+    operator fun String.invoke(init: MatchData.() -> Unit) = MatchData(name = this).apply(init)
+
     infix fun String.to(query: Any) = MatchData(name = this, query = query)
 
     data class MatchData(

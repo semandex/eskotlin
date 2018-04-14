@@ -47,7 +47,12 @@ class RangeBlock {
             }
     }
 
+    @Deprecated(message = "Use invoke operator instead.", replaceWith = ReplaceWith("invoke(init)"))
     infix fun String.to(init: RangeData.() -> Unit): RangeData {
+        return this.invoke(init)
+    }
+
+    operator fun String.invoke(init: RangeData.() -> Unit): RangeData {
         return RangeData(name = this).apply(init)
     }
 }

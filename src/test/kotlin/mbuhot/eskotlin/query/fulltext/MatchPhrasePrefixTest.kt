@@ -39,7 +39,7 @@ class MatchPhrasePrefixTest {
     @Test
     fun `test match_phrase_prefix with max_expansions`() {
         val query = match_phrase_prefix {
-            "message" to {
+            "message" {
                 query = "this is a test"
                 max_expansions = 10
             }
@@ -62,7 +62,7 @@ class MatchPhrasePrefixTest {
     @Test
     fun `test match_phrase_prefix with max_expansions and slop`() {
         val query = match_phrase_prefix {
-            "message" to {
+            "message" {
                 query = "this is a test"
                 max_expansions = 10
                 slop = 2

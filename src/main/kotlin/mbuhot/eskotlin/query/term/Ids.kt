@@ -22,8 +22,9 @@ class IdsData(
 
 fun ids(init: IdsData.() -> Unit): IdsQueryBuilder {
     val params = IdsData().apply(init)
-    return IdsQueryBuilder(*params.types.toTypedArray()).apply {
+    return IdsQueryBuilder().apply {
         initQuery(params)
         addIds(*params.values.toTypedArray())
+        types(*params.types.toTypedArray())
     }
 }

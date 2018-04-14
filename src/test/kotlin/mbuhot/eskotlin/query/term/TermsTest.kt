@@ -51,4 +51,30 @@ class TermsTest {
             }
             """
     }
+
+    @Test
+    fun `test terms lookup dsl`() {
+        val query = terms {
+            "user" {
+                index = "users"
+                type = "user"
+                id = "2"
+                path = "followers"
+            }
+        }
+
+        query should_render_as """
+            {
+                "terms" : {
+                    "user" : {
+                        "index" : "users",
+                        "type" : "user",
+                        "id" : "2",
+                        "path" : "followers"
+                    },
+                    "boost": 1.0
+                }
+            }
+            """
+    }
 }

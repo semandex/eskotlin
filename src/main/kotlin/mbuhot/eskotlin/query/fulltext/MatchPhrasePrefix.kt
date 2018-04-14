@@ -12,7 +12,12 @@ import org.elasticsearch.index.query.MatchPhrasePrefixQueryBuilder
  */
 
 class MatchPhrasePrefixBlock {
-    infix fun String.to(init: MatchPhrasePrefixData.() -> Unit) = MatchPhrasePrefixData(name = this).apply(init)
+
+    @Deprecated(message = "Use invoke operator instead.", replaceWith = ReplaceWith("invoke(init)"))
+    infix fun String.to(init: MatchPhrasePrefixData.() -> Unit) = this.invoke(init)
+
+    operator fun String.invoke(init: MatchPhrasePrefixData.() -> Unit) = MatchPhrasePrefixData(name = this).apply(init)
+
     infix fun String.to(query: Any) = MatchPhrasePrefixData(name = this, query = query)
 
     data class MatchPhrasePrefixData(

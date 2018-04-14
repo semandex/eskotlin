@@ -38,7 +38,7 @@ class RegexpTest {
     @Test
     fun `test regexp with boost and flags`() {
         val query = regexp {
-            "name.first" to {
+            "name.first" {
                 value = "s.*y"
                 boost = 1.2f
                 flags = listOf(INTERSECTION, COMPLEMENT, EMPTY)

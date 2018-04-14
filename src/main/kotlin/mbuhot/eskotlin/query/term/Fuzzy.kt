@@ -19,10 +19,13 @@ class FuzzyBlock {
 
     infix fun String.to(value: Any) = FuzzyData(name = this, value = value)
 
-    infix fun String.to(init: FuzzyData.() -> Unit): FuzzyData =
-            FuzzyData(name = this).apply(init)
+    @Deprecated(message = "Use invoke operator instead.", replaceWith = ReplaceWith("invoke(init)"))
+    infix fun String.to(init: FuzzyData.() -> Unit) = this.invoke(init)
+
+    operator fun String.invoke(init: FuzzyData.() -> Unit) = FuzzyData(name = this).apply(init)
 }
 
+@Suppress("DEPRECATION")
 fun fuzzy(init: FuzzyBlock.() -> FuzzyBlock.FuzzyData): FuzzyQueryBuilder {
     val params = FuzzyBlock().init()
     return FuzzyQueryBuilder(params.name, params.value).apply {

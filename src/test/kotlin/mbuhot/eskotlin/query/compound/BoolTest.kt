@@ -52,7 +52,7 @@ class BoolTest {
             }
             must_not {
                 range {
-                    "age" to {
+                    "age" {
                         from = 10
                         to = 20
                     }

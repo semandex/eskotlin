@@ -27,7 +27,7 @@ class NestedTest {
                 bool {
                     must = listOf(
                             match { "obj1.name" to "blue" },
-                            range { "obj1.count" to { gt = 5 } }
+                            range { "obj1.count" { gt = 5 } }
                     )
                 }
             }

@@ -12,7 +12,13 @@ import org.elasticsearch.index.query.Operator
  * common
  */
 class CommonBlock {
+
+    @Deprecated(message = "Use invoke operator instead.", replaceWith = ReplaceWith("invoke(init)"))
     infix fun String.to(init: CommonData.() -> Unit): CommonData {
+        return this.invoke(init)
+    }
+
+    operator fun String.invoke(init: CommonData.() -> Unit): CommonData {
         return CommonData(name = this).apply(init)
     }
 
