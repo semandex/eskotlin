@@ -101,7 +101,7 @@ val query = bool {
     }
     must_not {
         range {
-            "age" to {
+            "age" {
                 from = 10
                 to = 20
             }
@@ -199,7 +199,7 @@ See the src/test directory for more examples.
 + [Exists](./src/test/kotlin/mbuhot/eskotlin/query/term/ExistsTest.kt)
 + [Prefix](./src/test/kotlin/mbuhot/eskotlin/query/term/PrefixTest.kt)
 + [Wildcard](./src/test/kotlin/mbuhot/eskotlin/query/term/WildcardTest.kt)
-+ [Regex](./src/test/kotlin/mbuhot/eskotlin/query/term/RegexTest.kt)
++ [Regex](./src/test/kotlin/mbuhot/eskotlin/query/term/RegexpTest.kt)
 + [Fuzzy](./src/test/kotlin/mbuhot/eskotlin/query/term/FuzzyTest.kt)
 + [Type](./src/test/kotlin/mbuhot/eskotlin/query/term/TypeTest.kt)
 + [Ids](./src/test/kotlin/mbuhot/eskotlin/query/term/IdsTest.kt)
