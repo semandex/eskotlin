@@ -51,7 +51,7 @@ class MatchTest {
 
 
         val query = match {
-            "message" to {
+            "message" {
                 query = "this is a test"
                 operator = "and"
             }
@@ -79,7 +79,7 @@ class MatchTest {
     fun `test match zero terms query`() {
 
         val query = match {
-            "message" to {
+            "message" {
                 query = "to be or not to be"
                 operator = "and"
                 zero_terms_query = "all"
@@ -107,7 +107,7 @@ class MatchTest {
     @Test
     fun `test match cutoff frequency`() {
         val query = match {
-            "message" to {
+            "message" {
                 query = "to be or not to be"
                 cutoff_frequency = 0.001f
             }
@@ -135,7 +135,7 @@ class MatchTest {
     @Test
     fun `test match type phrase`() {
         val query = match {
-            "message" to {
+            "message" {
                 query = "this is a test"
             }
         }

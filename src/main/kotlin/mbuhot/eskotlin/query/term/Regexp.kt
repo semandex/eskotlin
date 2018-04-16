@@ -18,8 +18,10 @@ class RegexpBlock {
 
     infix fun String.to(value: String) = RegexpData(name = this, value = value)
 
-    infix fun String.to(init: RegexpData.() -> Unit): RegexpData =
-            RegexpData(name = this).apply(init)
+    @Deprecated(message = "Use invoke operator instead.", replaceWith = ReplaceWith("invoke(init)"))
+    infix fun String.to(init: RegexpData.() -> Unit) = this.invoke(init)
+
+    operator fun String.invoke(init: RegexpData.() -> Unit) = RegexpData(name = this).apply(init)
 }
 
 fun regexp(init: RegexpBlock.() -> RegexpBlock.RegexpData): RegexpQueryBuilder {

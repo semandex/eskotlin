@@ -40,7 +40,7 @@ fun bool(init: BoolData.() -> Unit): BoolQueryBuilder {
         params.filter?.forEach { filter(it) }
         params.must_not?.forEach { mustNot(it) }
         params.should?.forEach { should(it) }
-        params.minimum_should_match?.let { minimumNumberShouldMatch(it) }
+        params.minimum_should_match?.let { minimumShouldMatch(it) }
         params.boost?.let { boost(it) }
     }
 }

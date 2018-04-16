@@ -17,7 +17,7 @@ class RangeTest {
     @Test
     fun `test range`() {
         val query = range {
-            "age" to {
+            "age" {
                 gte = 10
                 lte = 20
                 boost = 2.0f
@@ -41,7 +41,7 @@ class RangeTest {
     @Test
     fun `test range with date format and time_zone`() {
         val query = range {
-            "born" to {
+            "born" {
                 gt = "01/01/2012"
                 lt = "2013"
                 format = "dd/MM/yyyy||yyyy"

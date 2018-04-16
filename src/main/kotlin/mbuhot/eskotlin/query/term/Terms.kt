@@ -22,6 +22,21 @@ class TermsBlock {
     infix fun String.to(lookup: TermsLookup): TermsData {
         return TermsData(name = this, termsLookup = lookup)
     }
+
+    class TermsLookupData(
+            var index: String? = null,
+            var type: String? = null,
+            var id: String? = null,
+            var path: String? = null
+    )
+
+    operator fun String.invoke(init: TermsLookupData.() -> Unit): TermsData {
+        val lookup = TermsLookupData().run {
+            init()
+            TermsLookup(index, type, id, path)
+        }
+        return TermsData(name = this, termsLookup = lookup)
+    }
 }
 
 fun terms(init: TermsBlock.() -> TermsBlock.TermsData): TermsQueryBuilder {

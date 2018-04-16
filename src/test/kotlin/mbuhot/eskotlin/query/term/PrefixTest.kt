@@ -33,7 +33,7 @@ class PrefixTest {
     @Test
     fun `test prefix with boost`() {
         val query = prefix {
-            "user" to {
+            "user" {
                 prefix = "ki"
                 boost = 2.0f
             }

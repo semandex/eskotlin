@@ -12,7 +12,7 @@ class CommonTest {
     @Test
     fun `test common terms query`() {
         val query = common {
-            "body" to {
+            "body" {
                 query = "this is bonsai cool"
                 cutoff_frequency = 0.001f
             }
@@ -37,7 +37,7 @@ class CommonTest {
     @Test
     fun `test common terms with low_frequency operator`() {
         val query = common {
-            "body" to {
+            "body" {
                 query = "nelly the elephant as a cartoon"
                 cutoff_frequency = 0.001f
                 low_freq_operator = "and"
@@ -63,7 +63,7 @@ class CommonTest {
     @Test
     fun `test common terms with minimum_should_match`() {
         val query = common {
-            "body" to {
+            "body" {
                 query = "nelly the elephant as a cartoon"
                 cutoff_frequency = 0.001f
                 minimum_should_match.low_freq = 2
@@ -91,7 +91,7 @@ class CommonTest {
     @Test
     fun `test common terms with separate minimum_should_match high and low`() {
         val query = common {
-            "body" to {
+            "body" {
                 query = "nelly the elephant not as a cartoon"
                 cutoff_frequency = 0.001f
                 minimum_should_match {

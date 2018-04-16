@@ -17,7 +17,12 @@ class TermBlock {
         return TermData(name = this, value = value)
     }
 
+    @Deprecated(message = "Use invoke operator instead.", replaceWith = ReplaceWith("invoke(init)"))
     infix fun String.to(init: TermData.() -> Unit): TermData {
+        return this.invoke(init)
+    }
+
+    operator fun String.invoke(init: TermData.() -> Unit): TermData {
         return TermData(name = this).apply(init)
     }
 }

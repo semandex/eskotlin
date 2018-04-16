@@ -15,8 +15,10 @@ class PrefixBlock {
 
     infix fun String.to(prefix: String) = PrefixData(name = this, prefix = prefix)
 
-    infix fun String.to(init: PrefixData.() -> Unit): PrefixData =
-            PrefixData(name = this).apply(init)
+    @Deprecated(message = "Use invoke operator instead.", replaceWith = ReplaceWith("invoke(init)"))
+    infix fun String.to(init: PrefixData.() -> Unit) = this.invoke(init)
+
+    operator fun String.invoke(init: PrefixData.() -> Unit) = PrefixData(name = this).apply(init)
 }
 
 fun prefix(init: PrefixBlock.() -> PrefixBlock.PrefixData): PrefixQueryBuilder {

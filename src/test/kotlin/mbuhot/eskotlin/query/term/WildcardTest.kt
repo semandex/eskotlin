@@ -33,7 +33,7 @@ class WildcardTest {
     @Test
     fun `test wildcard with boost`() {
         val query = wildcard {
-            "user" to {
+            "user" {
                 wildcard = "ki*y"
                 boost = 2.0f
             }

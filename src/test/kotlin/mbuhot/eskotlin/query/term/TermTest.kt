@@ -30,7 +30,7 @@ class TermTest {
     @Test
     fun `test term with boost and name`() {
         val query = term {
-            "status" to {
+            "status" {
                 value = "urgent"
                 boost = 2.0f
             }

@@ -2,6 +2,8 @@
  * Copyright (c) 2016. Michael Buhot m.buhot@gmail.com
  */
 
+@file:Suppress("DEPRECATION")
+
 package mbuhot.eskotlin.query.compound
 
 import mbuhot.eskotlin.query.should_render_as

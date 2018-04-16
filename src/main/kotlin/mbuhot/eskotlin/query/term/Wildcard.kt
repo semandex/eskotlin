@@ -15,8 +15,10 @@ class WildcardBlock {
 
     infix fun String.to(wildcard: String) = WildcardData(name = this, wildcard = wildcard)
 
-    infix fun String.to(init: WildcardData.() -> Unit): WildcardData =
-            WildcardData(name = this).apply(init)
+    @Deprecated(message = "Use invoke operator instead.", replaceWith = ReplaceWith("invoke(init)"))
+    infix fun String.to(init: WildcardData.() -> Unit) = this.invoke(init)
+
+    operator fun String.invoke(init: WildcardData.() -> Unit) = WildcardData(name = this).apply(init)
 }
 
 fun wildcard(init: WildcardBlock.() -> WildcardBlock.WildcardData): WildcardQueryBuilder {
@@ -25,4 +27,3 @@ fun wildcard(init: WildcardBlock.() -> WildcardBlock.WildcardData): WildcardQuer
         initQuery(params)
     }
 }
-

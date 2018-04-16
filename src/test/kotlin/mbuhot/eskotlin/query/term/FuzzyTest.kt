@@ -38,7 +38,7 @@ class FuzzyTest {
     @Test
     fun `test advanced fuzzy`() {
         val query = fuzzy {
-            "user" to {
+            "user" {
                 value = "ki"
                 boost = 2.0f
                 fuzziness = Fuzziness.TWO
