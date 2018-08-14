@@ -26,8 +26,9 @@ class MultiMatchTest {
                     "slop": 0,
                     "prefix_length": 0,
                     "max_expansions": 50,
-                    "lenient": false,
                     "zero_terms_query": "NONE",
+                    "auto_generate_synonyms_phrase_query": true,
+                    "fuzzy_transpositions": true,
                     "boost": 1.0
                 }
             }
@@ -53,8 +54,9 @@ class MultiMatchTest {
                     "prefix_length": 0,
                     "max_expansions": 50,
                     "tie_breaker": 0.3,
-                    "lenient": false,
                     "zero_terms_query": "NONE",
+                    "auto_generate_synonyms_phrase_query": true,
+                    "fuzzy_transpositions": true,
                     "boost": 1.0
                 }
             }
@@ -80,8 +82,9 @@ class MultiMatchTest {
                     "slop": 0,
                     "prefix_length": 0,
                     "max_expansions": 50,
-                    "lenient": false,
                     "zero_terms_query": "NONE",
+                    "auto_generate_synonyms_phrase_query": true,
+                    "fuzzy_transpositions": true,
                     "boost": 1.0
                 }
             }
@@ -108,8 +111,9 @@ class MultiMatchTest {
                     "slop": 0,
                     "prefix_length": 0,
                     "max_expansions": 50,
-                    "lenient": false,
                     "zero_terms_query": "NONE",
+                    "auto_generate_synonyms_phrase_query": true,
+                    "fuzzy_transpositions": true,
                     "boost": 1.0
                 }
             }
@@ -132,8 +136,9 @@ class MultiMatchTest {
                     "slop": 0,
                     "prefix_length": 0,
                     "max_expansions": 50,
-                    "lenient": false,
                     "zero_terms_query": "NONE",
+                    "auto_generate_synonyms_phrase_query": true,
+                    "fuzzy_transpositions": true,
                     "boost": 1.0
                 }
             }

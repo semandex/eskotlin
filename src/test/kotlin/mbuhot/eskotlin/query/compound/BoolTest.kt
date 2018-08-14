@@ -32,7 +32,6 @@ class BoolTest {
                         "boost": 1.0
                     }
                 }],
-                "disable_coord":false,
                 "adjust_pure_negative":true,
                 "boost":1.0
             }
@@ -110,7 +109,6 @@ class BoolTest {
                         }
                     }
                 }],
-                "disable_coord": false,
                 "adjust_pure_negative": true,
                 "minimum_should_match": "1",
                 "boost": 1.0

@@ -211,7 +211,6 @@ See the src/test directory for more examples.
 + [Dis Max](./src/test/kotlin/mbuhot/eskotlin/query/compound/DisMaxTest.kt)
 + [Function Score](./src/test/kotlin/mbuhot/eskotlin/query/compound/FunctionScoreTest.kt)
 + [Boosting](./src/test/kotlin/mbuhot/eskotlin/query/compound/BoostingTest.kt)
-+ [Indices](./src/test/kotlin/mbuhot/eskotlin/query/compound/IndicesTest.kt)
 
 ## Joining Queries - Done
 
