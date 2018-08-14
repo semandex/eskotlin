@@ -20,7 +20,7 @@ repositories {
    }
 }
 dependencies {
-    compile 'mbuhot:eskotlin:0.4.0'
+    compile 'mbuhot:eskotlin:0.5.0'
     ...
 }
 ```
