@@ -1,3 +1,10 @@
+# 0.5.0
+
+ - New syntax available for string keyed objects, no longer requires using `to`.
+ - Update to kotlin 1.2.60
+
+ Thanks to @vincentlauvlwj and @roschlau for contributions!
+
 # 0.4.0
 
  - Add TermsLookup support for `terms` query
