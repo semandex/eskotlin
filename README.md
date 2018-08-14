@@ -35,7 +35,7 @@ Full details on [bintray](https://bintray.com/mbuhot/maven/eskotlin/)
 <dependency>
   <groupId>mbuhot</groupId>
   <artifactId>eskotlin</artifactId>
-  <version>0.4.0</version>
+  <version>0.5.0</version>
   <type>pom</type>
 </dependency>
 ```
