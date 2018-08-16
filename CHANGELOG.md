@@ -1,6 +1,13 @@
+# 0.6.0
+
+ - Update elasticsearch version to 6.3
+ - `IndicesQueryBuilder` removed,
+ - `disable_coord` property of `CommonTermsQueryBuilder` removed
+ - Seed for `randomFunction` is no longer accepted as constructor parameter
+
 # 0.5.0
 
- - New syntax available for string keyed objects, no longer requires using `to`.
+ - New syntax available for string keyed objects, no longer requires using `to` when the right side is initialized with a lambda.
  - Update to kotlin 1.2.60
 
  Thanks to @vincentlauvlwj and @roschlau for contributions!
