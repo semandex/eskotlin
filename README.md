@@ -20,7 +20,7 @@ repositories {
    }
 }
 dependencies {
-    compile 'mbuhot:eskotlin:0.5.0'
+    compile 'mbuhot:eskotlin:0.6.0'
     ...
 }
 ```
@@ -35,7 +35,7 @@ Full details on [bintray](https://bintray.com/mbuhot/maven/eskotlin/)
 <dependency>
   <groupId>mbuhot</groupId>
   <artifactId>eskotlin</artifactId>
-  <version>0.5.0</version>
+  <version>0.6.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -211,7 +211,6 @@ See the src/test directory for more examples.
 + [Dis Max](./src/test/kotlin/mbuhot/eskotlin/query/compound/DisMaxTest.kt)
 + [Function Score](./src/test/kotlin/mbuhot/eskotlin/query/compound/FunctionScoreTest.kt)
 + [Boosting](./src/test/kotlin/mbuhot/eskotlin/query/compound/BoostingTest.kt)
-+ [Indices](./src/test/kotlin/mbuhot/eskotlin/query/compound/IndicesTest.kt)
 
 ## Joining Queries - Done
 
@@ -219,7 +218,7 @@ See the src/test directory for more examples.
 + [Has Child](./src/test/kotlin/mbuhot/eskotlin/query/joining/HasChildTest.kt)
 + [Has Parent](./src/test/kotlin/mbuhot/eskotlin/query/joining/HasParentTest.kt)
 
-## Geo Queries - Not Yet Implemented
+## Geo Queries - Contributions welcome!
 
 + Geo Shape
 + Geo Bounding Box
@@ -227,13 +226,13 @@ See the src/test directory for more examples.
 + Geo Polygon
 + Geohash Cell
 
-## Specialized Queries - Not Yet Implemented
+## Specialized Queries - Contributions welcome!
 
 + More Like This
 + Template
 + Script
 
-## Span Queries - Not Yet Implemented
+## Span Queries - Contributions welcome!
 
 + Span Term
 + Span Multi Term
@@ -244,6 +243,12 @@ See the src/test directory for more examples.
 + Span Containing
 + Span Within
 
+## Aggregations - Contributions welcome!
+
++ Metrics Aggregations
++ Bucket Aggregations
++ Pipeline Aggregations
++ Matrix Aggregations
 
 # License
 

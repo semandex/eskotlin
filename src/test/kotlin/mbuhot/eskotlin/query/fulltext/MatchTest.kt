@@ -39,6 +39,7 @@ class MatchTest {
                         "fuzzy_transpositions": true,
                         "lenient": false,
                         "zero_terms_query": "NONE",
+                        "auto_generate_synonyms_phrase_query": true,
                         "boost": 1.0
                     }
                 }
@@ -68,6 +69,7 @@ class MatchTest {
                         "fuzzy_transpositions": true,
                         "lenient": false,
                         "zero_terms_query": "NONE",
+                        "auto_generate_synonyms_phrase_query": true,
                         "boost": 1.0
                     }
                 }
@@ -96,6 +98,7 @@ class MatchTest {
                         "fuzzy_transpositions": true,
                         "lenient": false,
                         "zero_terms_query": "ALL",
+                        "auto_generate_synonyms_phrase_query": true,
                         "boost": 1.0
                     }
                 }
@@ -125,6 +128,7 @@ class MatchTest {
                         "lenient": false,
                         "zero_terms_query": "NONE",
                         "cutoff_frequency": 0.001,
+                        "auto_generate_synonyms_phrase_query": true,
                         "boost": 1.0
                     }
                 }
@@ -151,6 +155,7 @@ class MatchTest {
                         "fuzzy_transpositions": true,
                         "lenient": false,
                         "zero_terms_query": "NONE",
+                        "auto_generate_synonyms_phrase_query": true,
                         "boost": 1.0
                     }
                 }

@@ -41,16 +41,17 @@ class NestedTest {
                         "must" : [
                             {
                                 "match" : {
-                                    "obj1.name" : { 
+                                    "obj1.name" : {
                                         "query": "blue",
-                                        "operator":"OR",
-                                        "prefix_length":0,
-                                        "max_expansions":50,
-                                        "fuzzy_transpositions":true,
-                                        "lenient":false,
-                                        "zero_terms_query":"NONE",
+                                        "operator": "OR",
+                                        "prefix_length": 0,
+                                        "max_expansions": 50,
+                                        "fuzzy_transpositions": true,
+                                        "lenient": false,
+                                        "zero_terms_query": "NONE",
+                                        "auto_generate_synonyms_phrase_query": true,
                                         "boost": 1.0
-                                    } 
+                                    }
                                 }
                             },
                             {
@@ -65,7 +66,6 @@ class NestedTest {
                                 }
                             }
                         ],
-                        "disable_coord":false,
                         "adjust_pure_negative":true,
                         "boost":1.0
                     }
