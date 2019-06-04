@@ -245,6 +245,8 @@ See the src/test directory for more examples.
 
 ## Aggregations - Contributions welcome!
 
++ [Nested](./src/test/kotlin/mbuhot/eskotlin/aggregation/NestedAggregationTest.kt)
++ [Filter](./src/test/kotlin/mbuhot/eskotlin/aggregation/FilterAggregationTest.kt)
 + Metrics Aggregations
 + Bucket Aggregations
 + Pipeline Aggregations
