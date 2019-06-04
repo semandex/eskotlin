@@ -1,3 +1,8 @@
+# 0.7.0
+
+ - Add support for filter and nested aggregations, thanks @nzcoffeem !
+ - Update build script to Gradle 5
+
 # 0.6.0
 
  - Update elasticsearch version to 6.3
