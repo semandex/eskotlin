@@ -11,7 +11,7 @@ This integrates with the existing java API, only providing a nicer syntax to bui
 
 ## Gradle
 
-```
+```groovy
 repositories {
     mavenCentral()
     ...
@@ -20,7 +20,7 @@ repositories {
    }
 }
 dependencies {
-    compile 'mbuhot:eskotlin:0.6.0'
+    compile 'mbuhot:eskotlin:0.7.0'
     ...
 }
 ```
@@ -31,11 +31,11 @@ See [CHANGELOG](./CHANGELOG.md) for older versions supporting previous elasticse
 
 Full details on [bintray](https://bintray.com/mbuhot/maven/eskotlin/)
 
-```
+```xml
 <dependency>
   <groupId>mbuhot</groupId>
   <artifactId>eskotlin</artifactId>
-  <version>0.6.0</version>
+  <version>0.7.0</version>
   <type>pom</type>
 </dependency>
 ```
