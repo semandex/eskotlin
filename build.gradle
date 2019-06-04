@@ -30,33 +30,33 @@ dependencies {
     testCompile "junit:junit:4.11"
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
+// task sourcesJar(type: Jar, dependsOn: classes) {
+//     classifier = 'sources'
+//     from sourceSets.main.allSource
+// }
 
-// add source jar tasks as artifacts
-artifacts {
-    archives sourcesJar
-}
+// // add source jar tasks as artifacts
+// artifacts {
+//     archives sourcesJar
+// }
 
 repositories {
     mavenCentral()
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-            artifact sourcesJar
-        }
-    }
-}
+// publishing {
+//     publications {
+//         mavenJava(MavenPublication) {
+//             from components.java
+//             artifact sourcesJar
+//         }
+//     }
+// }
 
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
-    publications = ['mavenJava']
+    // publications = ['mavenJava']
     dryRun = false
     publish = true
     pkg {
@@ -70,12 +70,9 @@ bintray {
         labels = ['kotlin', 'elasticseasrch']
         publicDownloadNumbers = true
         version {
-            name = project.version //Bintray logical version name
-            released  = new Date() //2 possible values: date in the format of 'yyyy-MM-dd'T'HH:mm:ss.SSSZZ' OR a java.util.Date instance
-            vcsTag = project.version
-            mavenCentralSync {
-                sync = false //Optional (true by default). Determines whether to sync the version to Maven Central.
-            }
+            name = "0.7.0"
+            released = '2019-06-04T12:38:30.139+0000'
+            vcsTag = "0.7.0"
         }
     }
 }
