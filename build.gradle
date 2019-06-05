@@ -6,8 +6,8 @@ group 'mbuhot'
 version '0.7.0'
 
 apply plugin: 'kotlin'
-apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 
 buildscript {
     repositories {
@@ -16,7 +16,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.60"
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
     }
 }
 
@@ -30,33 +30,28 @@ dependencies {
     testCompile "junit:junit:4.11"
 }
 
-// task sourcesJar(type: Jar, dependsOn: classes) {
-//     classifier = 'sources'
-//     from sourceSets.main.allSource
-// }
-
-// // add source jar tasks as artifacts
-// artifacts {
-//     archives sourcesJar
-// }
-
 repositories {
     mavenCentral()
 }
 
-// publishing {
-//     publications {
-//         mavenJava(MavenPublication) {
-//             from components.java
-//             artifact sourcesJar
-//         }
-//     }
-// }
+task sourcesJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+        }
+    }
+}
 
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
-    // publications = ['mavenJava']
+    publications = ['mavenJava']
     dryRun = false
     publish = true
     pkg {
@@ -70,9 +65,9 @@ bintray {
         labels = ['kotlin', 'elasticseasrch']
         publicDownloadNumbers = true
         version {
-            name = "0.7.0"
-            released = '2019-06-04T12:38:30.139+0000'
-            vcsTag = "0.7.0"
+            name = project.version
+            released = new Date()
+            vcsTag = project.version
         }
     }
 }
