@@ -49,6 +49,7 @@ class HasParentTest {
                     "from": 0,
                     "size": 3,
                     "version": false,
+                    "seq_no_primary_term": false,
                     "explain": false,
                     "track_scores": false
                 }

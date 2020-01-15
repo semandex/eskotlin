@@ -22,43 +22,6 @@ class IdsTest {
         query should_render_as """
         {
             "ids" : {
-                "type" : [],
-                "values" : ["1", "100", "4"],
-                "boost": 1.0
-            }
-        }
-        """
-    }
-
-    @Test
-    fun `test ids with type`() {
-        val query = ids {
-            type = "my_type"
-            values = listOf("1", "100", "4")
-        }
-
-        query should_render_as """
-        {
-            "ids" : {
-                "type" : ["my_type"],
-                "values" : ["1", "100", "4"],
-                "boost": 1.0
-            }
-        }
-        """
-    }
-
-    @Test
-    fun `test ids with multiple types`() {
-        val query = ids {
-            types = listOf("my_type", "other_type")
-            values = listOf("1", "100", "4")
-        }
-
-        query should_render_as """
-        {
-            "ids" : {
-                "type" : ["my_type", "other_type"],
                 "values" : ["1", "100", "4"],
                 "boost": 1.0
             }

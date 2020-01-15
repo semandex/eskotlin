@@ -25,6 +25,5 @@ fun ids(init: IdsData.() -> Unit): IdsQueryBuilder {
     return IdsQueryBuilder().apply {
         initQuery(params)
         addIds(*params.values.toTypedArray())
-        types(*params.types.toTypedArray())
     }
 }

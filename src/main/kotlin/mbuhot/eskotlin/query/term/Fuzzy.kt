@@ -15,7 +15,8 @@ class FuzzyBlock {
             var value: Any? = null,
             var fuzziness: Fuzziness? = null,
             var prefix_length: Int? = null,
-            var max_expansions: Int? = null) : QueryData()
+            var max_expansions: Int? = null,
+            var transpositions: Boolean? = null) : QueryData()
 
     infix fun String.to(value: Any) = FuzzyData(name = this, value = value)
 
@@ -33,6 +34,7 @@ fun fuzzy(init: FuzzyBlock.() -> FuzzyBlock.FuzzyData): FuzzyQueryBuilder {
         params.fuzziness?.let { fuzziness(it) }
         params.prefix_length?.let { prefixLength(it) }
         params.max_expansions?.let { maxExpansions(it) }
+        transpositions(params.transpositions ?: false)
     }
 }
 
