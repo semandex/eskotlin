@@ -5,16 +5,20 @@
 package mbuhot.eskotlin.query.compound
 
 import org.elasticsearch.common.lucene.search.function.CombineFunction
+import org.elasticsearch.common.lucene.search.function.FieldValueFactorFunction
 import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilder
 import org.elasticsearch.index.query.MatchAllQueryBuilder
 import org.elasticsearch.index.query.QueryBuilder
+import org.elasticsearch.index.query.functionscore.FieldValueFactorFunctionBuilder
+import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders
 
 data class FunctionScoreData(
         var query: QueryBuilder = MatchAllQueryBuilder(),
         var boost: Float? = null,
         var functions: List<Pair<QueryBuilder?, ScoreFunctionBuilder<*>>> = emptyList(),
+        var field_value_factor: FieldValueFactorFunctionBuilder? = null,
         var max_boost: Float? = null,
         var score_mode: String? = null,
         var boost_mode: String? = null,
@@ -22,13 +26,17 @@ data class FunctionScoreData(
 
 fun function_score(init: FunctionScoreData.() -> Unit): FunctionScoreQueryBuilder {
     val params = FunctionScoreData().apply(init)
-    val filterFunctions = params.functions.map {
+    val factorWrapper = listOf(Pair(null as QueryBuilder?, params.field_value_factor as ScoreFunctionBuilder<*>?))
+    val merged  = factorWrapper + params.functions;
+
+    val filterFunctions = merged.filter { it.second != null }.map {
         if (it.first == null) {
             FunctionScoreQueryBuilder.FilterFunctionBuilder(it.second)
         } else {
             FunctionScoreQueryBuilder.FilterFunctionBuilder(it.first, it.second)
         }
     }
+
     val builder = FunctionScoreQueryBuilder(params.query, filterFunctions.toTypedArray())
 
     return builder.apply {

@@ -7,6 +7,7 @@ package mbuhot.eskotlin.query.compound
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.match_all
 import mbuhot.eskotlin.query.term.term
+import org.elasticsearch.common.lucene.search.function.FieldValueFactorFunction
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders.*
 import org.junit.Test
 
@@ -88,6 +89,49 @@ class FunctionScoreTest {
                 "boost": 1.2
             }
         }
+        """
+    }
+
+    @Test
+    fun `test field_value_factor`() {
+        val query = function_score {
+            query = match_all { }
+            field_value_factor = fieldValueFactorFunction("someField")
+            boost = 1.2f
+            boost_mode = "multiply"
+            score_mode = "max"
+            max_boost = 5.0f
+            min_score = 0.001f
+        }
+        
+        query should_render_as """{
+              "function_score" : {
+                "query" : {
+                  "match_all" : {
+                    "boost" : 1.0
+                  }
+                },
+                "functions" : [
+                  {
+                    "filter" : {
+                      "match_all" : {
+                        "boost" : 1.0
+                      }
+                    },
+                    "field_value_factor" : {
+                      "field" : "someField",
+                      "factor" : 1.0,
+                      "modifier" : "none"
+                    }
+                  }
+                ],
+                "score_mode" : "max",
+                "boost_mode" : "multiply",
+                "max_boost" : 5.0,
+                "min_score" : 0.001,
+                "boost" : 1.2
+              }
+            }
         """
     }
 }
