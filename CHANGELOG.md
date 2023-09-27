@@ -1,3 +1,7 @@
+# 0.8.0
+ 
+- Upgrade to new java and latest gradle
+
 # 0.7.0
 
  - Add support for filter and nested aggregations, thanks @nzcoffeem !
