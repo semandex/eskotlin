@@ -22,8 +22,6 @@ apply plugin: 'kotlin'
 apply plugin: 'maven-publish'
 
 repositories {
-    mavenCentral()
-
     maven {
         def repo_url = project.hasProperty('repo_url') ? project.property('repo_url')
                 : 'https://nexus.semandex.net:44355/repository/semandex-maven-prod/'
