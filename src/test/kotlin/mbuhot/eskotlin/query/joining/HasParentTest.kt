@@ -6,7 +6,7 @@ package mbuhot.eskotlin.query.joining
 
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.term
-import org.elasticsearch.index.query.InnerHitBuilder
+import org.opensearch.index.query.InnerHitBuilder
 import org.junit.Test
 
 /**

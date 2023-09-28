@@ -4,8 +4,8 @@
 
 package mbuhot.eskotlin.query.compound
 
-import org.elasticsearch.index.query.BoostingQueryBuilder
-import org.elasticsearch.index.query.QueryBuilder
+import org.opensearch.index.query.BoostingQueryBuilder
+import org.opensearch.index.query.QueryBuilder
 
 data class BoostingData(
     var positive: QueryBuilder? = null,

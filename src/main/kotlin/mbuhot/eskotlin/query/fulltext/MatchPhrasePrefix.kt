@@ -4,7 +4,7 @@
 
 package mbuhot.eskotlin.query.fulltext
 
-import org.elasticsearch.index.query.MatchPhrasePrefixQueryBuilder
+import org.opensearch.index.query.MatchPhrasePrefixQueryBuilder
 
 
 /**

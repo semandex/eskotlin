@@ -6,8 +6,8 @@ package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.QueryData
 import mbuhot.eskotlin.query.initQuery
-import org.elasticsearch.common.unit.Fuzziness
-import org.elasticsearch.index.query.FuzzyQueryBuilder
+import org.opensearch.common.unit.Fuzziness
+import org.opensearch.index.query.FuzzyQueryBuilder
 
 class FuzzyBlock {
     class FuzzyData(

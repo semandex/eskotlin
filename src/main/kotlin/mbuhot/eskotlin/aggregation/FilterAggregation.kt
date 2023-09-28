@@ -1,8 +1,8 @@
 package mbuhot.eskotlin.aggregation
 
-import org.elasticsearch.index.query.QueryBuilder
-import org.elasticsearch.search.aggregations.AggregationBuilder
-import org.elasticsearch.search.aggregations.bucket.filter.FilterAggregationBuilder
+import org.opensearch.index.query.QueryBuilder
+import org.opensearch.search.aggregations.AggregationBuilder
+import org.opensearch.search.aggregations.bucket.filter.FilterAggregationBuilder
 
 /**
  */

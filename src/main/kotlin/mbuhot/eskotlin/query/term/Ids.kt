@@ -6,7 +6,7 @@ package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.QueryData
 import mbuhot.eskotlin.query.initQuery
-import org.elasticsearch.index.query.IdsQueryBuilder
+import org.opensearch.index.query.IdsQueryBuilder
 
 class IdsData(
         var types: List<String> = emptyList(),

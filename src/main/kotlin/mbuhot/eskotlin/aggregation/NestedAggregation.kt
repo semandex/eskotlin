@@ -1,7 +1,7 @@
 package mbuhot.eskotlin.aggregation
 
-import org.elasticsearch.search.aggregations.AggregationBuilder
-import org.elasticsearch.search.aggregations.bucket.nested.NestedAggregationBuilder
+import org.opensearch.search.aggregations.AggregationBuilder
+import org.opensearch.search.aggregations.bucket.nested.NestedAggregationBuilder
 
 data class NestedAggregationData(
     var name: String? = null,

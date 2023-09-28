@@ -4,7 +4,7 @@
 
 package mbuhot.eskotlin.query.term
 
-import org.elasticsearch.index.query.MatchAllQueryBuilder
+import org.opensearch.index.query.MatchAllQueryBuilder
 
 
 /**

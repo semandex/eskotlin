@@ -5,9 +5,9 @@
 package mbuhot.eskotlin.query.joining
 
 import org.apache.lucene.search.join.ScoreMode
-import org.elasticsearch.join.query.HasChildQueryBuilder
-import org.elasticsearch.index.query.InnerHitBuilder
-import org.elasticsearch.index.query.QueryBuilder
+import org.opensearch.join.query.HasChildQueryBuilder
+import org.opensearch.index.query.InnerHitBuilder
+import org.opensearch.index.query.QueryBuilder
 
 data class HasChildData(
         var query: QueryBuilder? = null,

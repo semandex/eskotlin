@@ -1,6 +1,6 @@
 package mbuhot.eskotlin.query
 
-import org.elasticsearch.index.query.AbstractQueryBuilder
+import org.opensearch.index.query.AbstractQueryBuilder
 
 /**
  * Created on 8/11/16.

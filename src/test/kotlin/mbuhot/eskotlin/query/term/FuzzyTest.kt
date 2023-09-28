@@ -5,7 +5,7 @@
 package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.should_render_as
-import org.elasticsearch.common.unit.Fuzziness
+import org.opensearch.common.unit.Fuzziness
 import org.junit.Test
 
 /**

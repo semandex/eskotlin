@@ -5,9 +5,9 @@
 package mbuhot.eskotlin.query.joining
 
 import org.apache.lucene.search.join.ScoreMode
-import org.elasticsearch.index.query.InnerHitBuilder
-import org.elasticsearch.index.query.NestedQueryBuilder
-import org.elasticsearch.index.query.QueryBuilder
+import org.opensearch.index.query.InnerHitBuilder
+import org.opensearch.index.query.NestedQueryBuilder
+import org.opensearch.index.query.QueryBuilder
 
 
 data class NestedData(

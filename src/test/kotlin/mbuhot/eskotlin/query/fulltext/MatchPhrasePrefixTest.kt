@@ -29,6 +29,7 @@ class MatchPhrasePrefixTest {
                         "query" : "this is a test",
                         "slop":0,
                         "max_expansions":50,
+                        "zero_terms_query":"NONE",
                         "boost":1.0
                     }
                 }
@@ -52,6 +53,7 @@ class MatchPhrasePrefixTest {
                         "query" : "this is a test",
                         "slop":0,
                         "max_expansions":10,
+                        "zero_terms_query":"NONE",
                         "boost":1.0
                     }
                 }
@@ -76,6 +78,7 @@ class MatchPhrasePrefixTest {
                         "query" : "this is a test",
                         "slop":2,
                         "max_expansions":10,
+                        "zero_terms_query":"NONE",
                         "boost":1.0
                     }
                 }

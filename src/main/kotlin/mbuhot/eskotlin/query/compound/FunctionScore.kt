@@ -4,15 +4,13 @@
 
 package mbuhot.eskotlin.query.compound
 
-import org.elasticsearch.common.lucene.search.function.CombineFunction
-import org.elasticsearch.common.lucene.search.function.FieldValueFactorFunction
-import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery
-import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder
-import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilder
-import org.elasticsearch.index.query.MatchAllQueryBuilder
-import org.elasticsearch.index.query.QueryBuilder
-import org.elasticsearch.index.query.functionscore.FieldValueFactorFunctionBuilder
-import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders
+import org.opensearch.common.lucene.search.function.CombineFunction
+import org.opensearch.common.lucene.search.function.FunctionScoreQuery
+import org.opensearch.index.query.functionscore.FunctionScoreQueryBuilder
+import org.opensearch.index.query.functionscore.ScoreFunctionBuilder
+import org.opensearch.index.query.MatchAllQueryBuilder
+import org.opensearch.index.query.QueryBuilder
+import org.opensearch.index.query.functionscore.FieldValueFactorFunctionBuilder
 
 data class FunctionScoreData(
         var query: QueryBuilder = MatchAllQueryBuilder(),

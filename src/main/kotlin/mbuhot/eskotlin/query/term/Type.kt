@@ -6,7 +6,7 @@ package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.QueryData
 import mbuhot.eskotlin.query.initQuery
-import org.elasticsearch.index.query.TypeQueryBuilder
+import org.opensearch.index.query.TypeQueryBuilder
 
 class TypeData(
         var value: String? = null) : QueryData()
