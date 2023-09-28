@@ -4,8 +4,8 @@
 
 package mbuhot.eskotlin.query.compound
 
-import org.elasticsearch.index.query.DisMaxQueryBuilder
-import org.elasticsearch.index.query.QueryBuilder
+import org.opensearch.index.query.DisMaxQueryBuilder
+import org.opensearch.index.query.QueryBuilder
 
 data class DisMaxData(
     var tie_breaker: Float? = null,

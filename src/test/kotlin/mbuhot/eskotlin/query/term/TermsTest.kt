@@ -5,7 +5,7 @@
 package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.should_render_as
-import org.elasticsearch.indices.TermsLookup
+import org.opensearch.indices.TermsLookup
 import org.junit.Test
 
 /**

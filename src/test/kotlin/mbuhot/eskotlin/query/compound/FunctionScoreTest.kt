@@ -7,8 +7,7 @@ package mbuhot.eskotlin.query.compound
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.match_all
 import mbuhot.eskotlin.query.term.term
-import org.elasticsearch.common.lucene.search.function.FieldValueFactorFunction
-import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders.*
+import org.opensearch.index.query.functionscore.ScoreFunctionBuilders.*
 import org.junit.Test
 
 /**

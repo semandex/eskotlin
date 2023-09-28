@@ -6,8 +6,8 @@ package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.QueryData
 import mbuhot.eskotlin.query.initQuery
-import org.elasticsearch.index.query.RegexpFlag
-import org.elasticsearch.index.query.RegexpQueryBuilder
+import org.opensearch.index.query.RegexpFlag
+import org.opensearch.index.query.RegexpQueryBuilder
 
 class RegexpBlock {
     class RegexpData(

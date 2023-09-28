@@ -4,9 +4,9 @@
 
 package mbuhot.eskotlin.query.joining
 
-import org.elasticsearch.join.query.HasParentQueryBuilder
-import org.elasticsearch.index.query.InnerHitBuilder
-import org.elasticsearch.index.query.QueryBuilder
+import org.opensearch.join.query.HasParentQueryBuilder
+import org.opensearch.index.query.InnerHitBuilder
+import org.opensearch.index.query.QueryBuilder
 
 data class HasParentData(
         var query: QueryBuilder? = null,

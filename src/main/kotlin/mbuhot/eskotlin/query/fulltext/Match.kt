@@ -4,10 +4,10 @@
 
 package mbuhot.eskotlin.query.fulltext
 
-import org.elasticsearch.common.unit.Fuzziness
-import org.elasticsearch.index.query.MatchQueryBuilder
-import org.elasticsearch.index.query.Operator
-import org.elasticsearch.index.search.MatchQuery
+import org.opensearch.common.unit.Fuzziness
+import org.opensearch.index.query.MatchQueryBuilder
+import org.opensearch.index.query.Operator
+import org.opensearch.index.search.MatchQuery
 
 
 /**

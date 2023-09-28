@@ -4,8 +4,8 @@
 
 package mbuhot.eskotlin.query.fulltext
 
-import org.elasticsearch.index.query.CommonTermsQueryBuilder
-import org.elasticsearch.index.query.Operator
+import org.opensearch.index.query.CommonTermsQueryBuilder
+import org.opensearch.index.query.Operator
 
 
 /**

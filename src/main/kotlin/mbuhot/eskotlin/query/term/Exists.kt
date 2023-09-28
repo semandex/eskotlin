@@ -6,7 +6,7 @@ package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.QueryData
 import mbuhot.eskotlin.query.initQuery
-import org.elasticsearch.index.query.ExistsQueryBuilder
+import org.opensearch.index.query.ExistsQueryBuilder
 
 class ExistsData(var field: String? = null) : QueryData()
 

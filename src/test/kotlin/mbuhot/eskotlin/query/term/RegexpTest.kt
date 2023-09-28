@@ -5,7 +5,7 @@
 package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.should_render_as
-import org.elasticsearch.index.query.RegexpFlag.*
+import org.opensearch.index.query.RegexpFlag.*
 import org.junit.Test
 
 /**
