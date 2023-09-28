@@ -1,6 +1,6 @@
-# 0.8.0
- 
-- Upgrade to new java and latest gradle
+# 1.0.0
+
+- Upgrade to new gradle version
 - change namespace from 'org.elasticsearch' to 'org.opensearch'
 
 # 0.7.0
