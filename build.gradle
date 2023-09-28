@@ -2,13 +2,6 @@
  * Copyright (c) 2016. Michael Buhot m.buhot@gmail.com
  */
 
-group 'mbuhot'
-version '0.9.0'
-
-apply plugin: 'kotlin'
-//apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
-
 buildscript {
     repositories {
         mavenCentral()
@@ -21,21 +14,37 @@ buildscript {
     }
 }
 
+group 'mbuhot'
+version '0.9.0'
+
+apply plugin: 'java-base'
+apply plugin: 'kotlin'
+//apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+  kotlinVersion = '1.3.61'
+  //kotlinVersion = '1.9.10'
+  openSearchVersion = '1.3.13'
+}
+
 dependencies {
-    compile "org.opensearch:opensearch:1.3.13"
-    compile "org.opensearch.plugin:parent-join-client:1.3.13"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:1.3.61"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    compile "org.opensearch:opensearch:$openSearchVersion"
+    compile "org.opensearch.plugin:parent-join-client:$openSearchVersion"
+
     testCompile "org.apache.logging.log4j:log4j-api:2.20.0"
     testCompile "org.apache.logging.log4j:log4j-core:2.20.0"
     testCompile 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
     testCompile "junit:junit:4.13.2"
 }
 
-repositories {
-    mavenCentral()
-}
-
-task sourcesJar(type: Jar) {
+tasks.register('sourcesJar', Jar) {
     archiveClassifier = 'sources'
     from sourceSets.main.allSource
 }
