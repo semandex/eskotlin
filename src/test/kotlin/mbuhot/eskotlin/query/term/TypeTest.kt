@@ -12,35 +12,35 @@ import org.junit.jupiter.api.Test
 
  * @author Michael Buhot (m.buhot@gmail.com)
  */
-class TypeTest {
-    @Test
-    fun `test type`() {
-        val query = type {
-            value = "my_type"
-        }
-        query should_render_as """
-        {
-            "type": {
-                "value" : "my_type",
-                "boost" : 1.0
-            }
-        }
-        """
-    }
-
-    @Test
-    fun `test type with boost`() {
-        val query = type {
-            value = "my_type"
-            boost = 2.0f
-        }
-        query should_render_as """
-        {
-            "type": {
-                "value" : "my_type",
-                "boost" : 2.0
-            }
-        }
-        """
-    }
-}
+//class TypeTest {
+//    @Test
+//    fun `test type`() {
+//        val query = type {
+//            value = "my_type"
+//        }
+//        query should_render_as """
+//        {
+//            "type": {
+//                "value" : "my_type",
+//                "boost" : 1.0
+//            }
+//        }
+//        """
+//    }
+//
+//    @Test
+//    fun `test type with boost`() {
+//        val query = type {
+//            value = "my_type"
+//            boost = 2.0f
+//        }
+//        query should_render_as """
+//        {
+//            "type": {
+//                "value" : "my_type",
+//                "boost" : 2.0
+//            }
+//        }
+//        """
+//    }
+//}

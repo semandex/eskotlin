@@ -25,7 +25,6 @@ class TermsBlock {
 
     class TermsLookupData(
             var index: String? = null,
-            var type: String? = null,
             var id: String? = null,
             var path: String? = null
     )
@@ -33,7 +32,7 @@ class TermsBlock {
     operator fun String.invoke(init: TermsLookupData.() -> Unit): TermsData {
         val lookup = TermsLookupData().run {
             init()
-            TermsLookup(index, type, id, path)
+            TermsLookup(index, id, path)
         }
         return TermsData(name = this, termsLookup = lookup)
     }
