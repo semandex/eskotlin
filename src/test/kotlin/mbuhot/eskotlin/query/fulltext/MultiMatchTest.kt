@@ -5,7 +5,7 @@
 package mbuhot.eskotlin.query.fulltext
 
 import mbuhot.eskotlin.query.should_render_as
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 
 class MultiMatchTest {

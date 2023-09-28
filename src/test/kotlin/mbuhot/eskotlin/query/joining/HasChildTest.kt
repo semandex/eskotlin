@@ -8,7 +8,7 @@ import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.term
 import org.apache.lucene.search.join.ScoreMode
 import org.opensearch.index.query.InnerHitBuilder
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 /**
  * Created on 3/03/2016

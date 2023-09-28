@@ -7,7 +7,7 @@ package mbuhot.eskotlin.query.fulltext
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.boost
 import mbuhot.eskotlin.query.term.match_all
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 /**
  * Created on 2/03/2016
