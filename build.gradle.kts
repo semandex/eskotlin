@@ -11,7 +11,7 @@ plugins {
 
 description = "eskotlin project"
 group = "mbuhot"
-version = "1.1.0beta9"
+version = "1.1.0"
 
 val log4jVersion: String by extra("2.20.0")
 val kotlin_version: String by extra("1.9.10")
