@@ -9,12 +9,12 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.61"
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
+        //classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
     }
 }
 
 group 'mbuhot'
-version '1.0.0beta1'
+version '1.0.0'
 
 apply plugin: 'java-base'
 apply plugin: 'kotlin'
