@@ -1,4 +1,4 @@
-# 1.1.0
+# 2.0.0
 
 - Use opensearch client v2.x
 
