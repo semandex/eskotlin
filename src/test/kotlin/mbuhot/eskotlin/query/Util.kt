@@ -4,7 +4,7 @@
 package mbuhot.eskotlin.query
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.junit.Assert.assertEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 
 
 val jsonMapper = ObjectMapper()

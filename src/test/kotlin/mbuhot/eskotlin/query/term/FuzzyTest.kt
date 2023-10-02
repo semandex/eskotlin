@@ -6,7 +6,7 @@ package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.should_render_as
 import org.opensearch.common.unit.Fuzziness
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 /**
  * Created on 3/03/2016

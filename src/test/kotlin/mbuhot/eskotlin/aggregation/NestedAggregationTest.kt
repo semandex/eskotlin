@@ -4,7 +4,7 @@ import mbuhot.eskotlin.query.compound.bool
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.exists
 import mbuhot.eskotlin.query.term.term
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class NestedAggregationTest {
     @Test

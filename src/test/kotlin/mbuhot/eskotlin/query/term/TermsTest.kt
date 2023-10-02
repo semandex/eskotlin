@@ -6,7 +6,7 @@ package mbuhot.eskotlin.query.term
 
 import mbuhot.eskotlin.query.should_render_as
 import org.opensearch.indices.TermsLookup
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 /**
  * Created on 3/03/2016
@@ -34,7 +34,7 @@ class TermsTest {
     @Test
     fun `test terms lookup`() {
         val query = terms {
-            "user" to TermsLookup("users", "user", "2", "followers")
+            "user" to TermsLookup("users", "2", "followers")
         }
 
         query should_render_as """
@@ -42,7 +42,6 @@ class TermsTest {
                 "terms" : {
                     "user" : {
                         "index" : "users",
-                        "type" : "user",
                         "id" : "2",
                         "path" : "followers"
                     },
@@ -57,7 +56,6 @@ class TermsTest {
         val query = terms {
             "user" {
                 index = "users"
-                type = "user"
                 id = "2"
                 path = "followers"
             }
@@ -68,7 +66,6 @@ class TermsTest {
                 "terms" : {
                     "user" : {
                         "index" : "users",
-                        "type" : "user",
                         "id" : "2",
                         "path" : "followers"
                     },

@@ -1,3 +1,8 @@
+# 2.0.0
+
+- Use opensearch client v2.x
+
+
 # 1.0.0
 
 - Upgrade to new gradle version

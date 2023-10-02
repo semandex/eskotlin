@@ -3,7 +3,9 @@ package mbuhot.eskotlin.aggregation
 import mbuhot.eskotlin.query.compound.bool
 import mbuhot.eskotlin.query.should_render_as
 import mbuhot.eskotlin.query.term.exists
-import org.junit.Test
+import org.junit.jupiter.api.Test
+
+//import org.junit.jupiter.api.Test
 
 class FilterAggregationTest {
     @Test
