@@ -3,21 +3,21 @@
  */
 
 plugins {
-  id("org.jetbrains.kotlin.jvm") version "1.9.10"
-  id("org.jetbrains.kotlin.plugin.noarg") version "1.9.10"
-
-  id("net.semandex.plugins.gradle-scripts-plugin") version "0.4.6"
+  val kotlinVersion = "1.9.22"
+  id("org.jetbrains.kotlin.jvm") version (kotlinVersion)
+  id("org.jetbrains.kotlin.plugin.noarg") version (kotlinVersion)
+  id("net.semandex.plugins.gradle-scripts-plugin") version "0.5.2"
 }
 
 description = "eskotlin project"
 group = "mbuhot"
-version = "2.0.0"
+version = "2.1.0"
 
-val log4jVersion: String by extra("2.20.0")
-val kotlin_version: String by extra("1.9.10")
-val jacoco_version: String by extra("0.8.8")
-val junit_jupiter_version: String by extra("5.6.2")
-val openSearchVersion = "2.10.0"
+val log4jVersion: String by extra("2.23.1")
+val kotlinVersion: String by extra("1.9.22")
+val jacocoVersion: String by extra("0.8.11")
+val junitJupiterVersion: String by extra("5.6.2")
+val openSearchVersion = "2.13.0"
 
 pluginScripts {
   fromPlugin("ide")
@@ -31,12 +31,12 @@ pluginScripts {
   fromPlugin("publish")
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-  kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
-}
+//tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+//  kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
+//}
 
 dependencies {
-  implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
+  implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 
   implementation("org.opensearch:opensearch:$openSearchVersion")
   implementation("org.opensearch.client:opensearch-rest-high-level-client:$openSearchVersion")
